@@ -1,0 +1,103 @@
+\section{Methods}
+\subsection{Definition}
+Consider the Pairwise Markov Networks, we have an undirected graph $G=(V,E)$. For each vertex $v\in V$, there is an available states set $X_v$ and an energy function $\theta_v: X_v\rightarrow \mathbb{R}$. And for each edge $(u,v)\in E_G$, there is also an energy function $\theta_{u,v}:X_u\times X_v\rightarrow\mathbb{R}$, which defines interaction between vertices. The problem is to find the optimal assignment $\mathbf{x^*}$ that minimizes the total energy, namely
+\[ \mathbf{x^*} = \arg\min_{\mathbf{x}}\left(\sum_{v\in V}\theta_v(x_v) + \sum_{(u,v)\in E}\theta_{u,v}(x_u,x_v)\right) \]
+
+\subsection{Branch-and-Bound}
+{\color{red}{Branch and Bound is a widely used search algorithm, which requires strong skills for solving different problems with it.}} The basic idea is to do a search on the solution space of an optimization problem with constraints. The algorithm constantly divides the solution space into smaller subsets (this procedure is called Branch) and calculate a lower bound and an upper bound for each solution in a subset(this procedure is called Bound). After each Branch procedure, the subsets whose bound is beyond known solutions will not be considered further. As a result, many subsets(i.e. nodes on search tree) can be excluded, which reduces the solution space to be searched.
+
+To be more specific, assume that we have an optimization problem which wants to minimize the energy function. The algorithm is divided into two parts:
+\begin{itemize}
+\item[1.]Branch: The solution space $S${\color{red},} is divided into two (or more, we use two for example) subsets $S_1$ and $S_2$, which satisfy $S_1\cap S_2=\emptyset$ and $S_1\cup S_2=S$.
+\item[2.]Bound: We evaluate $S_1$ and $S_2$ and get the lower bound of minimum solution{\color{red}(get the minimum lower bounds)} $LB(S_1)$ and $LB(S_2)$ correspondingly, and the upper bound{\color{red}s} $UB(S_1)$ and $UB(S_2)$. If we have $LB(S_2)\ge UB(S_1)$, we can safely throw $S_2$ away without losing the optimal solution.
+\end{itemize}
+
+Branch and Bound usually search the solution tree with BFS or optimum-cost-first method. Each live node has only one chance to be an expansion node, which produces all child nodes in one visit. The nodes which lead to infeasible or non-optimal solutions in the child nodes will be thrown away. The nodes left will be added to the list of live nodes.
+
+\subsection{MapReduce}
+MapReduce is a programming model proposed by Google which is used for massive parallel computing.
+
+MapReduce is composed of the following two main steps:
+\begin{itemize}
+\item[1.]	Map procedure: The input data is divided into $N$ parts. The code for processing each part and the data will be copied to a compute node. The compute nodes run parallel and return the result.
+\item[2.]	Reduce procedure: The result of step $1$ is distributed to $M$ compute nodes. The nodes run parallel and return the result.
+\end{itemize}
+
+What users need to do is just implement map and reduce functions. Map tells the platform how to process the data, and reduce tells how to combine the results.
+
+\subsection{Branch-and-Bound Algorithm}
+Assume we have $n$ vertices which are numbered from $1$ to $n$, and let the states set of vertex $i$ be $X_i$.
+\begin{algorithm}[h]
+\caption{Branch and Bound Algorithm}
+\begin{algorithmic}[1]
+\Function{BranchAndBound}{$G=(V,E,X,\theta)$}
+    \State $X_V \gets X_1\times X_2\times\dots\times X_n$
+    \State $best \gets \textsc{UpperBound}(X_V)$
+    \State $\textsc{Add}(Q,X_V)$
+    \While{$Q$ is not empty}
+        \State $X \gets \textsc{NextElement}(Q)$
+        \If {$\textsc{LowerBound}(X)\geq best$}
+            \State \textbf{continue}
+        \EndIf
+        \State $(X^1,X^2,...,X^m) \gets \textsc{Branch}(X)$
+        \For {$i \gets 1$\textbf{ to }$m$}
+            \State $best \gets \min(best, \textsc{UpperBound}(X^i))$
+        \EndFor
+        \For {$i \gets 1$\textbf{ to }$m$}
+            \If {$\textsc{LowerBound}(X^i) < best$}
+                \State $\textsc{Add}(Q,X^i)$
+            \EndIf
+        \EndFor
+    \EndWhile
+    \State \textbf{return }$best$
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Branch-and-Bound on MapReduce}
+    If we take a look at the search tree of the algorithm, we can observe that the expansions of nodes on the same level are independent. Therefore, the branch procedure can be done parallel for a level of nodes. After that the bound procedure is done on all nodes expanded.
+
+    This can be fit into the MapReduce model. In a MapReduce model, input data is a list of \texttt{(key, value)} pairs, which is first processed by \texttt{map} function. The \texttt{map} function takes each \texttt{(key, value)} pair as input, do some calculation on it and emits a list of \texttt{(key', value')} pairs. The outputs are then grouped by keys, and sent to the \texttt{reduce} function. The \texttt{reduce} function takes a key and a list of values as input, and outputs a list of \texttt{(key'', value'')} pairs.
+
+    In our design, we process each level of the search tree with one MapReduce job, where we call it one iteration. In the $i$th iteration, we expand the $i$th level of nodes. Therefore the whole search needs $n$ iterations. For each iteration, the \texttt{map} function is designed as follows
+\begin{algorithm}
+\caption{Map}
+\begin{algorithmic}[1]
+\Function{Map}{$Key, Value, Context$}
+    \State $X \gets Value$
+    \State $(X^1,X^2,...,X^m) \gets \textsc{Branch}(X)$
+    \For {$i \gets 1$\textbf{ to }$m$}
+        \State $best \gets \min(best, \textsc{UpperBound}(X^i))$
+    \EndFor
+    \For {$i \gets 1$\textbf{ to }$m$}
+        \If {$\textsc{LowerBound}(X^i) < best$}
+            \State $Context.write(X)$
+        \EndIf
+    \EndFor
+    \State \textbf{return }$best$
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+\newpage
+
+    When we come to the \texttt{reduce} function, we should iterate over all nodes expanded to get the minimum upper bound. This results in only one reduce in each job, which significantly {\color{red} reduces} parallelism. We use what we call \textit{random grouping} to solve this.
+
+    Let a piece of input of map be $(key, value)$. We set $key$ to be empty and let $value$ represent a node on the search tree, which includes $n+3$ fields. The first $3$ states are minimum upper bound, lower bound and upper bound. The following $n$ fields corresponds to the states of each vertex with $-1$ representing the vertex has not been searched yet.
+
+    In the map function we expand a node $k=\{globalBest, LB, UB,$ $state_1, \dots, state_n\}$ to a list of nodes $L=\{k_1, \dots, k_m\}$, calculate lower bound and upper bound for each $k_i$ and finally update the minimum upper bound for each $k_i$. Thus the output nodes of each map function see a `local' view of the minimum upper bound. We assign each output node's $key$ field with a random integer which lies in $[0, r)$. The nodes with same $key$ will be sent to the same reduce.
+
+    In the reduce function, nodes will share their local minimum upper bound. {\color{red}????}
+
+    Let $t$ be the number of nodes expanded. Since we have $r$ random integers, the nodes will be divided into $r$ groups where each group has approximately $t_1=\lceil t/r \rceil$ nodes. Assume there are $q$ maps, normally the $t$ nodes are equally produced by the maps. Therefore, at least $t_2=\lceil t/q \rceil$ will see the actual global upper bound after map. The probability that none of the these nodes is in some particular group is
+    \[
+        \left(\frac{r-1}{r}\right)^{t_2}
+    \]
+
+    Let $p$ be the probability that each node sees the actual global minimum upper bound after reduce. We have
+    \begin{align*}
+        p \geq 1-r\left(1-\frac{1}{r}\right)^{t_2}
+    \end{align*}
+
+    For instance, select $r$ be 3-5 times the number of machines, probably 200. If we make $t_2$ be 10000, then we have
+    \[p\geq 1-200(1-1/200)^{10000}=1\]
+\newpage 

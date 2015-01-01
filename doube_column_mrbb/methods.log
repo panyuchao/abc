@@ -1,0 +1,15 @@
+This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.11)  31 DEC 2014 18:09
+entering extended mode
+**C:/Users/IIIS/Desktop/doube_column_mrbb/methods.tex
+(C:/Users/IIIS/Desktop/doube_column_mrbb/methods.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for loaded.
+! Undefined control sequence.
+l.2 \section
+            {Methods}
+? 
+! Emergency stop.
+l.2 \section
+            {Methods}
+End of file on the terminal!
+
