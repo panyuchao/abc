@@ -62,8 +62,8 @@ the infeasible rotamers not only as a pre-filtering algorithm but also in the
 branch step. Since the efficiency of the branch-and-bound searching algorithm
 heavily depends on the tightness of the bound, we use MPLP
 \cite[]{globerson2008fixing} and mini-bucket \cite[]{rollon2010evaluating} to
-compute the lower bound, and use Monte Carlo and simulated annealing to find a
-good solution as our upper bound. In distributed environment, each node
+compute the lower bound, and use simulated annealing to find a
+relatively better solution as our upper bound. In distributed environment, each node
 independently discovers the bound in its part of the search space, and it is
 essential to quickly share the global bound to each node. The global bound is
 our global state for algorithm optimization.

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.11)  2 JAN 2015 19:59
+This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.11)  2 JAN 2015 20:16
 entering extended mode
 **C:/Users/IIIS/Desktop/abc/double_column_mrbb/main.tex
 (C:/Users/IIIS/Desktop/abc/double_column_mrbb/main.tex
@@ -434,19 +434,27 @@ LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <6.5> not available
 (Font)              size <6> substituted on input line 3.
 
 
-Underfull \hbox (badness 3312) in paragraph at lines 11--12
-\OT1/ptm/m/n/9 Branch-and-Bound (BnB) is a widely-used search algorithm
+Overfull \hbox (2.22021pt too wide) in paragraph at lines 10--11
+\OT1/ptm/m/n/9 used search algorithm for solving various combinatorial optimiza
+tion
  []
 
 
-Underfull \hbox (badness 1009) in paragraph at lines 11--12
-\OT1/ptm/m/n/9 for solving various combinatorial optimization problems. This
+Underfull \hbox (badness 1052) in paragraph at lines 10--11
+\OT1/ptm/m/n/9 several smaller sub-spaces (this step is called \OT1/ptm/m/it/9 
+branching\OT1/ptm/m/n/9 ) and
  []
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 15.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 14.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Overfull \hbox (2.50937pt too wide) in paragraph at lines 52--53
+ \OT1/ptm/m/it/9 2.1.2 MapReduce[] \OT1/ptm/m/n/9 MapReduce is a programming mo
+del proposed
+ []
 
 LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <8> not available
 (Font)              Font shape `OT1/phv/b/it' tried instead on input line 56.
@@ -466,11 +474,11 @@ Overfull \hbox (261.0pt too wide) has occurred while \output is active
  []
 
 [2]
-Underfull \hbox (badness 1205) in paragraph at lines 60--61
+Underfull \hbox (badness 1205) in paragraph at lines 58--59
 []\OT1/ptm/m/n/9 What users need to do is just implement map and reduce
  []
 
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 66.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 63.
 (E:\CTEX\MiKTeX\tex\latex\psnfss\ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
@@ -478,6 +486,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 )
 (C:\Users\IIIS\Desktop\abc\double_column_mrbb\optimization.tex
+Underfull \hbox (badness 1939) in paragraph at lines 4--5
+ \OT1/ptm/m/it/9 2.2.1 Local Dead-End Elimination Algorithm[] \OT1/ptm/m/n/9 Th
+e dead-end
+ []
+
+
 Overfull \hbox (261.0pt too wide) has occurred while \output is active
 [][] 
  []
@@ -486,24 +500,29 @@ Overfull \hbox (261.0pt too wide) has occurred while \output is active
 Overfull \vbox (1.0pt too high) has occurred while \output is active []
 
  [3]
-Overfull \hbox (6.56898pt too wide) in paragraph at lines 14--14
+Overfull \hbox (6.56898pt too wide) in paragraph at lines 13--13
 [] 
  []
 
 
-Overfull \hbox (2.9038pt too wide) in paragraph at lines 38--38
+Overfull \hbox (2.9038pt too wide) in paragraph at lines 37--37
 [] 
  []
 
 
-Overfull \hbox (5.18848pt too wide) in paragraph at lines 57--57
+Overfull \hbox (5.18848pt too wide) in paragraph at lines 56--56
 [] 
  []
 
 
-Underfull \hbox (badness 1442) in paragraph at lines 61--62
+Underfull \hbox (badness 1442) in paragraph at lines 60--61
 []\OT1/ptm/m/n/9 If we compute $\OML/cmm/m/it/9 LB[]$ \OT1/ptm/m/n/9 directly, 
 then the time complexity is
+ []
+
+
+Underfull \hbox (badness 1097) in paragraph at lines 65--66
+\OT1/ptm/m/n/9 There are many meta-heuristic methods have been applied to
  []
 
 
@@ -520,7 +539,7 @@ Overfull \hbox (261.0pt too wide) has occurred while \output is active
  []
 
 [4]
-Overfull \hbox (6.10432pt too wide) in paragraph at lines 74--74
+Overfull \hbox (6.10432pt too wide) in paragraph at lines 72--72
 [] 
  []
 
@@ -530,6 +549,9 @@ Overfull \hbox (6.10432pt too wide) in paragraph at lines 74--74
 Underfull \hbox (badness 1708) in paragraph at lines 60--66
 \OT1/ptm/m/n/9 of heterotrimeric collagen peptides with a built-in cystine-
  []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Overfull \hbox (261.0pt too wide) has occurred while \output is active
@@ -550,55 +572,55 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Extra height:9.85844pt when 202.92921pt
+Extra height:9.85844pt when 103.92921pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Extra height:9.85844pt when 203.92921pt
+Extra height:9.85844pt when 104.92921pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Extra height:9.85844pt when 204.92921pt
+Extra height:9.85844pt when 105.92921pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Extra height:9.85844pt when 205.92921pt
+Extra height:9.85844pt when 106.92921pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Extra height:9.85844pt when 206.92921pt
+Extra height:9.85844pt when 107.92921pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Extra height:9.85844pt when 207.92921pt
+Extra height:9.85844pt when 108.92921pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Extra height:0.0pt when 208.92921pt
+Extra height:0.0pt when 109.92921pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-(2)Left:208.92921pt Right:196.85844pt Output:208.92921pt
+(2)Left:109.92921pt Right:108.85844pt Output:109.92921pt
 - LAST -
 Extra skip:0.0pt
-Left:208.92921pt
-Right:196.85844pt
-Output:208.92921pt
+Left:109.92921pt
+Right:108.85844pt
+Output:109.92921pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -626,7 +648,7 @@ LaTeX Font Warning: Size substitutions with differences
 Here is how much of TeX's memory you used:
  3753 strings out of 495362
  47165 string characters out of 3184022
- 113979 words of memory out of 3000000
+ 114979 words of memory out of 3000000
  6800 multiletter control sequences out of 15000+200000
  51208 words of font info for 110 fonts, out of 3000000 for 9000
  18 hyphenation exceptions out of 8191
@@ -647,7 +669,7 @@ b><E:/CTEX/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><E:/CTEX/MiKTeX/fonts/type
 /urw/helvetic/uhvro8a.pfb><E:/CTEX/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><E:/
 CTEX/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><E:/CTEX/MiKTeX/fonts/type1/urw/ti
 mes/utmri8a.pfb>
-Output written on main.pdf (6 pages, 255093 bytes).
+Output written on main.pdf (6 pages, 254996 bytes).
 PDF statistics:
  106 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

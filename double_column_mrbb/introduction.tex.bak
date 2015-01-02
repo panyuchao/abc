@@ -1,6 +1,119 @@
 \section{Introduction}
-In the past few years, Computational Protein Design (CPD) has become an important tool for protein engineering \cite[]{alvizo2007computational}, such as peptide synthesis \cite[]{ottl1996design}, protein-protein interactions \cite[]{roberts2012computational}, artificial gene synthesis \cite[]{villalobos2006gene}, etc. In the structure-based computational protein design problem, the goal is to predict amino acid sequences that will fold to a specific protein structure. More precisely, the aim for CPD is to find the global minimum energy conformation (GMEC) based on the desired energy function.
 
-The protein design problem has been proven NP-hard \cite[]{pierce2002protein}. This problem is modeled as a MAP-MRF inference problem \cite[]{yanover2006linear}, which can be approximated by a Linear Programming Relaxation (LPR) problem \cite[]{wainwright2005map}. On the other hand, there exists several methods which can solve the GMEC problem exactly, such as DEE/A* (OSPREY, Donald Lab at DUKE University), Branch-and-Bound Search \cite[]{hong2006protein}, tree decomposition \cite[]{xu2006fast}, AND/OR Branch-and-Bound \cite[]{marinescu2009and}, Integer Linear Programming \cite[]{kingsford2005solving}, Cost Network Function \cite[]{traore2013new}.
+Protein design is an important method in drug discovery, \xuw{what else??} and
+other life science research areas. Due to the long cycle and high cost in
+wet-lab experiments, Computational Protein Design (CPD) has become an important
+tool for protein engineering~\cite[]{alvizo2007computational}. People have
+successfully demonstrated the effectiveness of CPD in applications such as
+peptide synthesis \cite[]{ottl1996design}, protein-protein interactions
+\cite[]{roberts2012computational}, artificial gene synthesis
+\cite[]{villalobos2006gene}.
 
-Our work is the first attempt to apply the branch-and-bound (BnB) search algorithm on distributed platform (such as MapReduce) to solve the Computational Protein Design problem. In our method, the DEE criteria is applied to prune the infeasible rotamers not only as a pre-filtering algorithm but also in the branch step. Since the efficiency of the branch-and-bound searching algorithm heavily depends on the tightness of the bound, we use MPLP \cite[]{globerson2008fixing} and mini-bucket \cite[]{rollon2010evaluating} to compute the lower bound, and use Monte Carlo and simulated annealing to find a good solution as our upper bound. 
+\xuw{what is the difference/relation between CPD and SCPR?} Specifically, in the
+structure-based computational protein design (SCPR) problem, the goal is to
+predict amino acid sequences that will fold to a specific protein structure.
+More precisely, the aim for CPD is to find the global minimum energy
+conformation (GMEC) based on the desired energy function.
+
+The protein design problem has been proven NP-hard \cite[]{pierce2002protein}.
+On approach is to obtain approximate solutions, providing no guarantees on the
+optimal solution. This problem is modeled as a MAP-MRF inference problem
+\cite[]{yanover2006linear}, which can be approximated by a Linear Programming
+Relaxation (LPR) problem \cite[]{wainwright2005map}.
+
+On the other hand, there are several methods which can solve the GMEC problem
+exactly. Of course, to solve an NP-hard problem exactly, scaling to a larger
+protein is the major concern of current these algorithms.
+
+There are two considerations to scale to a larger protein. The first is to
+redesign the algorithms to limit the search space as much as possible. Such as
+DEE/A* (OSPREY, Donald Lab at DUKE University)~\xuw{used XXX technique to reduce
+the search space, while .. (summarize their key ideas)} Branch-and-Bound Search
+\cite[]{hong2006protein}, tree decomposition \cite[]{xu2006fast}, AND/OR
+Branch-and-Bound \cite[]{marinescu2009and}, Integer Linear Programming
+\cite[]{kingsford2005solving}, Cost Network Function \cite[]{traore2013new}.
+
+The second way is to use more machines to perform the computation and tries to
+achieve parallel performance. As the search space can be partitioned to allow
+each node to handle one partition, we can speed up the search using more
+machines. With the development of cloud computing, the cost of computation
+resources is going down rapidly, making distributed brutal force solutions more
+plausible. Folding@Home~\cite{} is an early attempt to cultivate unused cycles
+on desktop PCs to perform protein computation. However, by the definition of
+NP-hard, massive computation resources are wasted even for a moderate-sized
+problem.
+
+It is difficult to combine the optimized algorithms in a large distributed
+computing infrastructure. The main reason is that the optimization part of these
+algorithms often requires global states, such as the upper and lower bounds in
+the branch-and-bound (BnB) algorithm. Unfortunately, it is a known hard problem
+to efficiently sharing such a state in a ``cloud'' system built with commodity
+hardware and networking, especially in the presence of node failures.
+
+As the first work to combine a highly optimized GMEC algorithm with massively
+scalable cloud-based system, we designed a version of the branch-and-bound (BnB)
+search algorithm over a customized Hadoop framework. We demonstrated that the
+system scales near-linearly to hundreds of computation servers, attempting
+hundreds of billions of braches in parallel, while still takes advantage of all
+optimizations in the algorithm.
+
+In our method, the DEE criteria\xuw{need to explain this?} is applied to prune
+the infeasible rotamers not only as a pre-filtering algorithm but also in the
+branch step. Since the efficiency of the branch-and-bound searching algorithm
+heavily depends on the tightness of the bound, we use MPLP
+\cite[]{globerson2008fixing} and mini-bucket \cite[]{rollon2010evaluating} to
+compute the lower bound, and use Monte Carlo and simulated annealing to find a
+good solution as our upper bound. In distributed environment, each node
+independently discovers the bound in its part of the search space, and it is
+essential to quickly share the global bound to each node. The global bound is
+our global state for algorithm optimization.
+
+Our key observation is that the global bound does not affect the correctness of
+the algorithm: if a node does not receive the global state, it just uses a
+sub-optimal bound and result is no more than performing some unnecessary
+computation. Thus we can share the bound in a best-effort way and tolerate the
+occasional inconsistency of the states. As we will show in the paper, the extra
+overhead is negligible and the gain of performance is significant comparing to
+the brutal force approach.
+
+In this paper, we demonstrate two approaches to perform the best-effort state
+sharing. The first approach uses probabilistic data propagation, resulting in an
+algorithm that runs on unmodified MapReduce~\cite[]{} framework. The second
+approach is based on asynchronous communication and eventual consistency
+model~\cite[]{}, which requires minor modifications of the Hadoop framework, but
+can improve performance by XX%.
+
+Our system inherits all fault-tolerance benefits of the cloud-based systems. In
+one of our experiments, we killed XXX computation nodes and the analysis still
+completed normally. This feature is the key to make the cloud economics model
+work: researchers can take advantage of the off-peak machine time to perform the
+GMEC tasks and can kill some tasks whenever there is better use of the machines
+– the killed tasks will automatically restart on other machines without
+affecting the final results. The cost of off-peak machine times (such as the
+“spot instances” in Amazon’s EC2 cloud computing platform~\cite[]{}
+http://aws.amazon.com/ec2/purchasing-options/spot-instances/ ) is only a
+fraction of the normal price, making our approach financially practical.
+
+We have three contributions in this paper
+
+\begin{enumerate}
+  \item We integrated several optimizations to improve the BnB algorithm. \xuw{key
+ideas of the algorithms}
+
+  \item We demonstrated that by relaxing the consistency requirements of the global
+bound in the BnB algorithm, we create a massively scalable computation system
+that runs the highly optimized version of BnB algorithm to solve GMEC problems
+in protein design. The system runs efficiently on commodity cloud computing
+environment and tolerates failures effectively.
+
+  \item We obtain the optimal results on XX protein design problems, which was not
+possible using even the state-of-the-art single machine algorithms. \xuw{more comp-bio contributions here?}
+
+\end{enumerate}
+
+We want to emphasis that although this paper focuses on branch-and-bound
+algorithm, our methodology of handling global states by relaxing the consistency
+requirements can be applied to many different search algorithms of the same
+nature.
+
+The remaining of the paper goes as follows..

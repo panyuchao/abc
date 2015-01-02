@@ -1,7 +1,6 @@
 \subsection{Optimization}
 
-\subsubsection{Local Dead-End Elimination Algorithm}\
-
+\subsubsection{Local Dead-End Elimination Algorithm}
 The dead-end elimination (DEE) algorithm is an efficient method to eliminate infeasible variable states. For a variable $x_v$, and two variable states $x_v^i$ and $x_v^j$ in $X_v$, if the following condition is satisfied, then state $x_v^i$ can be eliminated, which reduces the search space.
 \begin{align}
 & \theta_v(x_v^i)+\sum_{(u,v)\in E}\min_{x_u\in X_u}\theta_{uv}(x_u,x_v^i) \notag \\
@@ -62,8 +61,7 @@ If we compute $LB_2$ directly, then the time complexity is $O(n^2m^2)$, where $n
 
 \noindent\textbf{Mini-Bucket.} The mini-bucket elimination (MBE) is a well-known approximation algorithm for graphical models \cite[]{dechter2003mini, rollon2010evaluating, rollon2006mini}, and it gives a bound when the induced width of the graph is too large. The idea of mini-bucket elimination is to eliminate variables, and the time and space complexity of MBE is $O(m^i)$ where $i$ is a user controlled parameter that restrict the size of the scopes of each functions.
 
-\subsubsection{Upper Bound}\
-
+\subsubsection{Upper Bound}
 Upper bound is different from lower bound, we often use a relatively better solution in $X$ as its upper bound. There are many meta-heuristic methods have been applied to it, such as Monte-Carlo with simulated annealing \cite[]{kuhlman2000native, voigt2000trading}, and genetic algorithms \cite[]{raha2000prediction}. These approaches can usually find a relatively better solution quickly but without any guarantees of accuracy. Thus, these methods provide us with an efficient upper bound.
 
 In our method, we choose simulated annealing as our upper bound algorithm. Simulated annealing (SA) is a generic probabilistic meta-heuristic method for the global optimization problem, and it is often used when the search space is discrete. The SA heuristic is started with an arbitrary initial state. At each step, consider a neighbouring state $s'$ of the current state $s$, and probabilistically decides between moving to $s'$ or staying in $s$. The probabilities ultimately lead the system to the states with lower energy.
