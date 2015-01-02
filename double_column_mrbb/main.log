@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.2)  2 JAN 2015 14:21
+This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.2)  2 JAN 2015 14:26
 entering extended mode
 **C:/Users/PYC/Desktop/abc/double_column_mrbb/main.tex
 (C:/Users/PYC/Desktop/abc/double_column_mrbb/main.tex
@@ -439,35 +439,24 @@ Overfull \hbox (261.0pt too wide) has occurred while \output is active
  []
 
 [2]) (C:\Users\PYC\Desktop\abc\double_column_mrbb\optimization.tex
-Underfull \hbox (badness 1939) in paragraph at lines 4--5
- \OT1/ptm/m/it/9 2.2.1 Local Dead-End Elimination Algorithm[] \OT1/ptm/m/n/9 Th
-e dead-end
- []
-
-
-Overfull \hbox (6.56898pt too wide) in paragraph at lines 13--13
+Overfull \hbox (6.56898pt too wide) in paragraph at lines 14--14
 [] 
  []
 
 
-Overfull \hbox (2.9038pt too wide) in paragraph at lines 37--37
+Overfull \hbox (2.9038pt too wide) in paragraph at lines 38--38
 [] 
  []
 
 
-Overfull \hbox (5.18848pt too wide) in paragraph at lines 57--57
+Overfull \hbox (5.18848pt too wide) in paragraph at lines 58--58
 [] 
  []
 
 
-Underfull \hbox (badness 1442) in paragraph at lines 61--62
+Underfull \hbox (badness 1442) in paragraph at lines 62--63
 []\OT1/ptm/m/n/9 If we compute $\OML/cmm/m/it/9 LB[]$ \OT1/ptm/m/n/9 directly, 
 then the time complexity is
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 63--64
-
  []
 
 
@@ -641,7 +630,7 @@ oftware/CTEX/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Software/CTEX/MiKTe
 X/fonts/type1/urw/helvetic/uhvro8a.pfb><C:/Software/CTEX/MiKTeX/fonts/type1/urw
 /times/utmb8a.pfb><C:/Software/CTEX/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:
 /Software/CTEX/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (5 pages, 245562 bytes).
+Output written on main.pdf (5 pages, 245504 bytes).
 PDF statistics:
  103 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
