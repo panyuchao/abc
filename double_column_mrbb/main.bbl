@@ -6,6 +6,11 @@ Alvizo, O., Allen, B.~D., and Mayo, S.~L. (2007).
   engineering.
 \newblock {\em Biotechniques}, 42(1):31--35.
 
+\bibitem[Dechter and Rish, 2003]{dechter2003mini}
+Dechter, R. and Rish, I. (2003).
+\newblock Mini-buckets: A general scheme for bounded inference.
+\newblock {\em Journal of the ACM (JACM)}, 50(2):107--153.
+
 \bibitem[Gainza et~al., 2013]{gainza2013osprey}
 Gainza, P., Roberts, K.~E., Georgiev, I., Lilien, R.~H., Keedy, D.~A., Chen,
   C.-Y., Reza, F., Anderson, A.~C., Richardson, D.~C., Richardson, J.~S.,
@@ -39,6 +44,12 @@ Kingsford, C.~L., Chazelle, B., and Singh, M. (2005).
   and integer programming.
 \newblock {\em Bioinformatics}, 21(7):1028--1039.
 
+\bibitem[Kuhlman and Baker, 2000]{kuhlman2000native}
+Kuhlman, B. and Baker, D. (2000).
+\newblock Native protein sequences are close to optimal for their structures.
+\newblock {\em Proceedings of the National Academy of Sciences},
+  97(19):10383--10388.
+
 \bibitem[Marinescu and Dechter, 2009]{marinescu2009and}
 Marinescu, R. and Dechter, R. (2009).
 \newblock And/or branch-and-bound search for combinatorial optimization in
@@ -58,6 +69,11 @@ Pierce, N.~A. and Winfree, E. (2002).
 \newblock Protein design is np-hard.
 \newblock {\em Protein Engineering}, 15(10):779--782.
 
+\bibitem[Raha et~al., 2000]{raha2000prediction}
+Raha, K., Wollacott, A.~M., Italia, M.~J., and Desjarlais, J.~R. (2000).
+\newblock Prediction of amino acid sequence from structure.
+\newblock {\em Protein Science}, 9(06):1106--1119.
+
 \bibitem[Roberts et~al., 2012]{roberts2012computational}
 Roberts, K.~E., Cushing, P.~R., Boisguerin, P., Madden, D.~R., and Donald,
   B.~R. (2012).
@@ -69,6 +85,12 @@ Roberts, K.~E., Cushing, P.~R., Boisguerin, P., Madden, D.~R., and Donald,
 Rollon, E. and Dechter, R. (2010).
 \newblock Evaluating partition strategies for mini-bucket elimination.
 \newblock In {\em ISAIM}.
+
+\bibitem[Rollon and Larrosa, 2006]{rollon2006mini}
+Rollon, E. and Larrosa, J. (2006).
+\newblock Mini-bucket elimination with bucket propagation.
+\newblock In {\em Principles and Practice of Constraint Programming-CP 2006},
+  pages 484--498. Springer.
 
 \bibitem[Traor{\'e} et~al., 2013]{traore2013new}
 Traor{\'e}, S., Allouche, D., Andr{\'e}, I., de~Givry, S., Katsirelos, G.,
@@ -83,6 +105,12 @@ Villalobos, A., Ness, J.~E., Gustafsson, C., Minshull, J., and Govindarajan, S.
 \newblock Gene designer: a synthetic biology tool for constructing artificial
   dna segments.
 \newblock {\em BMC bioinformatics}, 7(1):285.
+
+\bibitem[Voigt et~al., 2000]{voigt2000trading}
+Voigt, C.~A., Gordon, D.~B., and Mayo, S.~L. (2000).
+\newblock Trading accuracy for speed: A quantitative comparison of search
+  algorithms in protein sequence design.
+\newblock {\em Journal of molecular biology}, 299(3):789--803.
 
 \bibitem[Wainwright et~al., 2005]{wainwright2005map}
 Wainwright, M.~J., Jaakkola, T.~S., and Willsky, A.~S. (2005).

@@ -1,36 +1,36 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.2)  2 JAN 2015 14:26
+This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.11)  2 JAN 2015 19:53
 entering extended mode
-**C:/Users/PYC/Desktop/abc/double_column_mrbb/main.tex
-(C:/Users/PYC/Desktop/abc/double_column_mrbb/main.tex
+**C:/Users/IIIS/Desktop/abc/double_column_mrbb/main.tex
+(C:/Users/IIIS/Desktop/abc/double_column_mrbb/main.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for loaded.
-(C:\Users\PYC\Desktop\abc\double_column_mrbb\bioinfo.cls
+(C:\Users\IIIS\Desktop\abc\double_column_mrbb\bioinfo.cls
 Document Class: bioinfo 2003/02/08 0.1
-(C:\Software\CTEX\MiKTeX\tex\latex\crop\crop.sty
+(E:\CTEX\MiKTeX\tex\latex\crop\crop.sty
 Package: crop 2003/05/20 v1.9 crop marks (mf)
 \stockwidth=\dimen102
 \stockheight=\dimen103
 \CROP@index=\count79
 
-(C:\Software\CTEX\MiKTeX\tex\latex\graphics\color.sty
+(E:\CTEX\MiKTeX\tex\latex\graphics\color.sty
 Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
 
-(C:\Software\CTEX\MiKTeX\tex\latex\00miktex\color.cfg
+(E:\CTEX\MiKTeX\tex\latex\00miktex\color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 130.
 
-(C:\Software\CTEX\MiKTeX\tex\latex\pdftex-def\pdftex.def
+(E:\CTEX\MiKTeX\tex\latex\pdftex-def\pdftex.def
 File: pdftex.def 2010/11/26 v0.05c Graphics/color for pdfTeX
 \Gread@gobject=\count80
 ))
-(C:\Software\CTEX\MiKTeX\tex\latex\graphics\graphics.sty
+(E:\CTEX\MiKTeX\tex\latex\graphics\graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-(C:\Software\CTEX\MiKTeX\tex\latex\graphics\trig.sty
+(E:\CTEX\MiKTeX\tex\latex\graphics\trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(C:\Software\CTEX\MiKTeX\tex\latex\00miktex\graphics.cfg
+(E:\CTEX\MiKTeX\tex\latex\00miktex\graphics.cfg
 File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
@@ -38,35 +38,35 @@ Package graphics Info: Driver file: pdftex.def on input line 91.
 \CROP@offset=\count81
 Package crop Info: Local config file crop.cfg used on input line 605.
 
-(C:\Software\CTEX\MiKTeX\tex\xelatex\xetexconfig\crop.cfg))
-(C:\Software\CTEX\MiKTeX\tex\latex\graphics\graphicx.sty
+(E:\CTEX\MiKTeX\tex\xelatex\xetexconfig\crop.cfg))
+(E:\CTEX\MiKTeX\tex\latex\graphics\graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-(C:\Software\CTEX\MiKTeX\tex\latex\graphics\keyval.sty
+(E:\CTEX\MiKTeX\tex\latex\graphics\keyval.sty
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks14
 )
 \Gin@req@height=\dimen104
 \Gin@req@width=\dimen105
 )
-(C:\Software\CTEX\MiKTeX\tex\latex\ams\math\amsmath.sty
+(E:\CTEX\MiKTeX\tex\latex\ams\math\amsmath.sty
 Package: amsmath 2000/07/18 v2.13 AMS math features
 \@mathmargin=\skip41
 
 For additional information on amsmath, use the `?' option.
-(C:\Software\CTEX\MiKTeX\tex\latex\ams\math\amstext.sty
+(E:\CTEX\MiKTeX\tex\latex\ams\math\amstext.sty
 Package: amstext 2000/06/29 v2.01
 
-(C:\Software\CTEX\MiKTeX\tex\latex\ams\math\amsgen.sty
+(E:\CTEX\MiKTeX\tex\latex\ams\math\amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks15
 \ex@=\dimen106
 ))
-(C:\Software\CTEX\MiKTeX\tex\latex\ams\math\amsbsy.sty
+(E:\CTEX\MiKTeX\tex\latex\ams\math\amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen107
 )
-(C:\Software\CTEX\MiKTeX\tex\latex\ams\math\amsopn.sty
+(E:\CTEX\MiKTeX\tex\latex\ams\math\amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count82
@@ -107,7 +107,7 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
 LaTeX Info: Redefining \[ on input line 2666.
 LaTeX Info: Redefining \] on input line 2667.
 )
-(C:\Software\CTEX\MiKTeX\tex\latex\tools\array.sty
+(E:\CTEX\MiKTeX\tex\latex\tools\array.sty
 Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \col@sep=\dimen115
 \extrarowheight=\dimen116
@@ -115,17 +115,17 @@ Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \extratabsurround=\skip44
 \backup@length=\skip45
 )
-(C:\Software\CTEX\MiKTeX\tex\latex\amsfonts\amssymb.sty
+(E:\CTEX\MiKTeX\tex\latex\amsfonts\amssymb.sty
 Package: amssymb 2009/06/22 v3.00
 
-(C:\Software\CTEX\MiKTeX\tex\latex\amsfonts\amsfonts.sty
+(E:\CTEX\MiKTeX\tex\latex\amsfonts\amsfonts.sty
 Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
 ))
-(C:\Software\CTEX\MiKTeX\tex\latex\sttools\flushend.sty
+(E:\CTEX\MiKTeX\tex\latex\sttools\flushend.sty
 Package: flushend 1997/10/01
 \@aaa=\box28
 \@ccc=\box29
@@ -135,12 +135,12 @@ Package: flushend 1997/10/01
 \@extra@skip=\dimen117
 \@nd@page@rule=\dimen118
 )
-(C:\Software\CTEX\MiKTeX\tex\latex\sttools\stfloats.sty
+(E:\CTEX\MiKTeX\tex\latex\sttools\stfloats.sty
 Package: stfloats 1999/10/22
 \@dblbotnum=\count94
 \c@dblbotnumber=\count95
 )
-(C:\Software\CTEX\MiKTeX\tex\latex\ams\classes\amsthm.sty
+(E:\CTEX\MiKTeX\tex\latex\ams\classes\amsthm.sty
 Package: amsthm 2004/08/06 v2.20
 \thm@style=\toks22
 \thm@bodyfont=\toks23
@@ -152,12 +152,12 @@ Package: amsthm 2004/08/06 v2.20
 \thm@headsep=\skip48
 \dth@everypar=\toks27
 )
-(C:\Software\CTEX\MiKTeX\tex\latex\changepage\chngpage.sty
+(E:\CTEX\MiKTeX\tex\latex\changepage\chngpage.sty
 Package: chngpage 2009/10/20 v1.2b change page layout
 \c@cp@cnt=\count96
 \c@cp@tempcnt=\count97
 )
-(C:\Software\CTEX\MiKTeX\tex\latex\psnfss\times.sty
+(E:\CTEX\MiKTeX\tex\latex\psnfss\times.sty
 Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
 )
 \c@section=\count98
@@ -176,18 +176,18 @@ Package: times 2005/04/12 PSNFSS-v9.2a (SPQR)
 \tempdime=\dimen120
 \temptbox=\box32
 
-(C:\Software\CTEX\MiKTeX\tex\latex\natbib\natbib.sty
+(E:\CTEX\MiKTeX\tex\latex\natbib\natbib.sty
 Package: natbib 2009/11/07 8.31a (PWD, AO)
 \bibhang=\skip54
 \bibsep=\skip55
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count105
 ))
-(C:\Software\CTEX\MiKTeX\tex\latex\algorithms\algorithm.sty
+(E:\CTEX\MiKTeX\tex\latex\algorithms\algorithm.sty
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
 nment
 
-(C:\Software\CTEX\MiKTeX\tex\latex\float\float.sty
+(E:\CTEX\MiKTeX\tex\latex\float\float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count106
 \float@exts=\toks28
@@ -195,13 +195,13 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks29
 \@floatcapt=\box34
 )
-(C:\Software\CTEX\MiKTeX\tex\latex\base\ifthen.sty
+(E:\CTEX\MiKTeX\tex\latex\base\ifthen.sty
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
 \@float@every@algorithm=\toks30
 \c@algorithm=\count107
 )
-(C:\Software\CTEX\MiKTeX\tex\latex\algorithmicx\algorithmicx.sty
+(E:\CTEX\MiKTeX\tex\latex\algorithmicx\algorithmicx.sty
 Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
 
 Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
@@ -215,23 +215,23 @@ Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
 \c@ALG@storecount=\count113
 \c@ALG@tmpcounter=\count114
 \ALG@tmplength=\skip58
-) (C:\Software\CTEX\MiKTeX\tex\latex\algorithmicx\algpseudocode.sty
+) (E:\CTEX\MiKTeX\tex\latex\algorithmicx\algpseudocode.sty
 Package: algpseudocode 
 
 Document Style - pseudocode environments for use with the `algorithmicx' style
-) (C:\Software\CTEX\MiKTeX\tex\latex\tools\xspace.sty
+) (E:\CTEX\MiKTeX\tex\latex\tools\xspace.sty
 Package: xspace 2006/05/08 v1.12 Space after command names (DPC,MH)
 )
-(C:\Software\CTEX\MiKTeX\tex\latex\psnfss\pifont.sty
+(E:\CTEX\MiKTeX\tex\latex\psnfss\pifont.sty
 Package: pifont 2005/04/12 PSNFSS-v9.2a Pi font support (SPQR) 
 LaTeX Font Info:    Try loading font information for U+pzd on input line 63.
 
-(C:\Software\CTEX\MiKTeX\tex\latex\psnfss\upzd.fd
+(E:\CTEX\MiKTeX\tex\latex\psnfss\upzd.fd
 File: upzd.fd 2001/06/04 font definitions for U/pzd.
 )
 LaTeX Font Info:    Try loading font information for U+psy on input line 64.
 
-(C:\Software\CTEX\MiKTeX\tex\latex\psnfss\upsy.fd
+(E:\CTEX\MiKTeX\tex\latex\psnfss\upsy.fd
 File: upsy.fd 2001/06/04 font definitions for U/psy.
 ))
 \c@theorem=\count115
@@ -241,7 +241,7 @@ File: upsy.fd 2001/06/04 font definitions for U/psy.
 LaTeX Warning: Unused global option(s):
     [singlecolumdfsn].
 
-(C:\Users\PYC\Desktop\abc\double_column_mrbb\main.aux)
+(C:\Users\IIIS\Desktop\abc\double_column_mrbb\main.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 138.
 LaTeX Font Info:    ... okay on input line 138.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 138.
@@ -257,10 +257,10 @@ LaTeX Font Info:    ... okay on input line 138.
 LaTeX Font Info:    Try loading font information for OT1+ptm on input line 138.
 
 
-(C:\Software\CTEX\MiKTeX\tex\latex\psnfss\ot1ptm.fd
+(E:\CTEX\MiKTeX\tex\latex\psnfss\ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
-(C:\Software\CTEX\MiKTeX\tex\context\base\supp-pdf.mkii
+(E:\CTEX\MiKTeX\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count117
 \scratchdimen=\dimen121
@@ -278,7 +278,7 @@ Package crop Info: detected driver: `pdftex' on input line 138.
 Package crop Info: using `pdftex' graphics driver on input line 138.
 LaTeX Font Info:    Try loading font information for OT1+phv on input line 149.
 
- (C:\Software\CTEX\MiKTeX\tex\latex\psnfss\ot1phv.fd
+ (E:\CTEX\MiKTeX\tex\latex\psnfss\ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <9> not available
@@ -326,12 +326,12 @@ LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <6.5> not available
 (Font)              size <6> substituted on input line 149.
 
 LaTeX Font Info:    Try loading font information for U+msa on input line 149.
-(C:\Software\CTEX\MiKTeX\tex\latex\amsfonts\umsa.fd
+(E:\CTEX\MiKTeX\tex\latex\amsfonts\umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 149.
 
-(C:\Software\CTEX\MiKTeX\tex\latex\amsfonts\umsb.fd
+(E:\CTEX\MiKTeX\tex\latex\amsfonts\umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
 LaTeX Font Info:    Calculating math sizes for size <9.09996> on input line 149
@@ -368,63 +368,100 @@ Underfull \hbox (badness 10000) detected at line 149
 
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <8> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 165.
-(C:\Users\PYC\Desktop\abc\double_column_mrbb\introduction.tex
+(C:\Users\IIIS\Desktop\abc\double_column_mrbb\introduction.tex
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 1.
 
-Underfull \hbox (badness 1072) in paragraph at lines 2--3
-\OT1/ptm/m/n/9 2007), such as peptide synthesis (Ottl et al., 1996), protein-
+Underfull \hbox (badness 2961) in paragraph at lines 3--11
+\OT1/ptm/m/n/9 engineering (Alvizo et al., 2007). People have successfully
  []
 
-) (C:\Users\PYC\Desktop\abc\double_column_mrbb\methods.tex
+
+Underfull \hbox (badness 1540) in paragraph at lines 36--45
+[]\OT1/ptm/m/n/9 The second way is to use more machines to perform the
+ []
+
+
+Underfull \hbox (badness 1173) in paragraph at lines 36--45
+\OT1/ptm/m/n/9 However, by the definition of NP-hard, massive computation
+ []
+
+
+Underfull \hbox (badness 1248) in paragraph at lines 79--85
+\OT1/ptm/m/n/9 MapReduce () framework. The second approach is based on
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Font Info:    Try loading font information for OMS+phv on input line 85.
+
+(E:\CTEX\MiKTeX\tex\latex\psnfss\omsphv.fd
+File: omsphv.fd 
+)
+LaTeX Font Info:    Font shape `OMS/phv/m/n' in size <7> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 85.
+ [1
+
+{E:/CTEX/UserData/pdftex/config/pdftex.map{Unicode.sfd}{UGBK.sfd}}
+
+
+]
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ì in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ú in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ù in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ô in font ptmr7t!
+
+Underfull \hbox (badness 1577) in paragraph at lines 100--102
+[]\OT1/ptm/m/n/9 We integrated several optimizations to improve the BnB
+ []
+
+
+Underfull \hbox (badness 1122) in paragraph at lines 103--108
+\OT1/ptm/m/n/9 of the global bound in the BnB algorithm, we create a
+ []
+
+) (C:\Users\IIIS\Desktop\abc\double_column_mrbb\methods.tex
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <6.5> not available
 (Font)              size <6> substituted on input line 3.
 
 
-Overfull \hbox (2.22021pt too wide) in paragraph at lines 10--11
-\OT1/ptm/m/n/9 used search algorithm for solving various combinatorial optimiza
-tion
+Underfull \hbox (badness 3312) in paragraph at lines 11--12
+\OT1/ptm/m/n/9 Branch-and-Bound (BnB) is a widely-used search algorithm
  []
 
 
-Underfull \hbox (badness 1052) in paragraph at lines 10--11
-\OT1/ptm/m/n/9 several smaller sub-spaces (this step is called \OT1/ptm/m/it/9 
-branching\OT1/ptm/m/n/9 ) and
+Underfull \hbox (badness 1009) in paragraph at lines 11--12
+\OT1/ptm/m/n/9 for solving various combinatorial optimization problems. This
  []
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 14.
-LaTeX Font Info:    Try loading font information for OMS+phv on input line 17.
-(C:\Software\CTEX\MiKTeX\tex\latex\psnfss\omsphv.fd
-File: omsphv.fd 
-)
-LaTeX Font Info:    Font shape `OMS/phv/m/n' in size <7> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 17.
- [1
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 15.
 
-{C:/Software/CTEX/UserData/pdftex/config/pdftex.map{Unicode.sfd}{UGBK.sfd}}
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-]
-Overfull \hbox (2.50937pt too wide) in paragraph at lines 52--53
- \OT1/ptm/m/it/9 2.1.2 MapReduce[] \OT1/ptm/m/n/9 MapReduce is a programming mo
-del proposed
- []
-
-
-Underfull \hbox (badness 1205) in paragraph at lines 58--59
+Underfull \hbox (badness 1205) in paragraph at lines 60--61
 []\OT1/ptm/m/n/9 What users need to do is just implement map and reduce
  []
 
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 63.
-(C:\Software\CTEX\MiKTeX\tex\latex\psnfss\ot1pcr.fd
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 66.
+(E:\CTEX\MiKTeX\tex\latex\psnfss\ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <8> not available
-(Font)              Font shape `OT1/phv/b/it' tried instead on input line 94.
+(Font)              Font shape `OT1/phv/b/it' tried instead on input line 67.
 LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <8> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 94.
+(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 67.
 
 Overfull \hbox (261.0pt too wide) has occurred while \output is active
 [][] 
@@ -438,25 +475,9 @@ Overfull \hbox (261.0pt too wide) has occurred while \output is active
 [][] 
  []
 
-[2]) (C:\Users\PYC\Desktop\abc\double_column_mrbb\optimization.tex
+[2]) (C:\Users\IIIS\Desktop\abc\double_column_mrbb\optimization.tex
 Overfull \hbox (6.56898pt too wide) in paragraph at lines 14--14
 [] 
- []
-
-
-Overfull \hbox (2.9038pt too wide) in paragraph at lines 38--38
-[] 
- []
-
-
-Overfull \hbox (5.18848pt too wide) in paragraph at lines 58--58
-[] 
- []
-
-
-Underfull \hbox (badness 1442) in paragraph at lines 62--63
-[]\OT1/ptm/m/n/9 If we compute $\OML/cmm/m/it/9 LB[]$ \OT1/ptm/m/n/9 directly, 
-then the time complexity is
  []
 
 
@@ -468,15 +489,27 @@ Overfull \hbox (261.0pt too wide) has occurred while \output is active
 Overfull \vbox (1.0pt too high) has occurred while \output is active []
 
  [3]
-Overfull \hbox (5.7266pt too wide) in paragraph at lines 109--109
+Overfull \hbox (2.9038pt too wide) in paragraph at lines 38--38
 [] 
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Overfull \hbox (5.18848pt too wide) in paragraph at lines 57--57
+[] 
+ []
 
-)
-(C:\Users\PYC\Desktop\abc\double_column_mrbb\main.bbl
+
+Underfull \hbox (badness 1442) in paragraph at lines 61--62
+[]\OT1/ptm/m/n/9 If we compute $\OML/cmm/m/it/9 LB[]$ \OT1/ptm/m/n/9 directly, 
+then the time complexity is
+ []
+
+
+Overfull \hbox (6.10432pt too wide) in paragraph at lines 74--74
+[] 
+ []
+
+
 Overfull \hbox (261.0pt too wide) has occurred while \output is active
 [][] 
  []
@@ -489,101 +522,89 @@ Overfull \hbox (261.0pt too wide) has occurred while \output is active
 [][] 
  []
 
-[4]
-Underfull \hbox (badness 1708) in paragraph at lines 49--55
+[4]) (C:\Users\IIIS\Desktop\abc\double_column_mrbb\results.tex)
+(C:\Users\IIIS\Desktop\abc\double_column_mrbb\conclusion.tex)
+(C:\Users\IIIS\Desktop\abc\double_column_mrbb\main.bbl
+Underfull \hbox (badness 1708) in paragraph at lines 60--66
 \OT1/ptm/m/n/9 of heterotrimeric collagen peptides with a built-in cystine-
  []
 
+
+Underfull \hbox (badness 3019) in paragraph at lines 110--114
+\OT1/ptm/m/n/9 accuracy for speed: A quantitative comparison of search
+ []
+
 )
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
+Extra height:21.85844pt when 599.97743pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Extra height:9.85844pt when 186.42921pt
+Extra height:21.85844pt when 600.97743pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
+Extra height:21.85844pt when 601.97743pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Extra height:9.85844pt when 187.42921pt
+Extra height:21.85844pt when 602.97743pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
+Extra height:21.85844pt when 603.97743pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Extra height:9.85844pt when 188.42921pt
+Extra height:-0.14156pt when 604.97743pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
+Extra height:-0.14156pt when 605.97743pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Extra height:9.85844pt when 189.42921pt
+Extra height:-0.14156pt when 606.97743pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
+Extra height:-0.14156pt when 607.97743pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Extra height:9.85844pt when 190.42921pt
+Extra height:-0.14156pt when 608.97743pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
+Extra height:-0.14156pt when 609.97743pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Extra height:9.85844pt when 191.42921pt
+Extra height:-0.14156pt when 610.97743pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
+Extra height:-0.14156pt when 611.97743pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Extra height:9.85844pt when 192.42921pt
+Extra height:-0.14156pt when 612.97743pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
+Extra height:-0.14156pt when 613.97743pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Extra height:9.85844pt when 193.42921pt
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Extra height:9.85844pt when 194.42921pt
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Extra height:9.85844pt when 195.42921pt
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Extra height:9.85844pt when 196.42921pt
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Extra height:0.0pt when 197.42921pt
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-(2)Left:197.42921pt Right:174.85844pt Output:197.42921pt
+Extra height:-0.14156pt when 614.97743pt
+Extra height:0.0pt when 615.97743pt
+(2)Left:615.97743pt Right:605.45586pt Output:615.97743pt
 - LAST -
 Extra skip:0.0pt
-Left:197.42921pt
-Right:174.85844pt
-Output:197.42921pt
+Left:615.97743pt
+Right:605.45586pt
+Output:615.97743pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -595,42 +616,38 @@ Overfull \hbox (261.0pt too wide) has occurred while \output is active
 
 Overfull \vbox (1.0pt too high) has occurred while \output is active []
 
- [5
-
-]
-(C:\Users\PYC\Desktop\abc\double_column_mrbb\main.aux)
+ [5]
+(C:\Users\IIIS\Desktop\abc\double_column_mrbb\main.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
  ) 
 Here is how much of TeX's memory you used:
- 3731 strings out of 495362
- 47402 string characters out of 3183520
- 114786 words of memory out of 3000000
- 6784 multiletter control sequences out of 15000+200000
+ 3753 strings out of 495362
+ 47165 string characters out of 3184022
+ 127979 words of memory out of 3000000
+ 6800 multiletter control sequences out of 15000+200000
  51208 words of font info for 110 fonts, out of 3000000 for 9000
  18 hyphenation exceptions out of 8191
- 36i,11n,26p,744b,300s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Software/CTEX/MiKTeX/fonts/enc/dvips/fontname/8r.enc}<C:/Software/CTEX/Mi
-KTeX/fonts/type1/public/amsfonts/cm/cmbx6.pfb><C:/Software/CTEX/MiKTeX/fonts/ty
-pe1/public/amsfonts/cm/cmbx9.pfb><C:/Software/CTEX/MiKTeX/fonts/type1/public/am
-sfonts/cmextra/cmex9.pfb><C:/Software/CTEX/MiKTeX/fonts/type1/public/amsfonts/c
-m/cmmi5.pfb><C:/Software/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><
-C:/Software/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Software/C
-TEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Software/CTEX/MiKTeX/fon
-ts/type1/public/amsfonts/cm/cmr6.pfb><C:/Software/CTEX/MiKTeX/fonts/type1/publi
-c/amsfonts/cm/cmr7.pfb><C:/Software/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmr9.pfb><C:/Software/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/
-Software/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Software/CTEX
-/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Software/CTEX/MiKTeX/fonts
-/type1/urw/courier/ucrr8a.pfb><C:/Software/CTEX/MiKTeX/fonts/type1/urw/helvetic
-/uhvb8a.pfb><C:/Software/CTEX/MiKTeX/fonts/type1/urw/helvetic/uhvbo8a.pfb><C:/S
-oftware/CTEX/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Software/CTEX/MiKTe
-X/fonts/type1/urw/helvetic/uhvro8a.pfb><C:/Software/CTEX/MiKTeX/fonts/type1/urw
-/times/utmb8a.pfb><C:/Software/CTEX/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:
-/Software/CTEX/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (5 pages, 245504 bytes).
+ 36i,11n,26p,672b,298s stack positions out of 5000i,500n,10000p,200000b,50000s
+{E:/CTEX/MiKTeX/fonts/enc/dvips/fontname/8r.enc}<E:/CTEX/MiKTeX/fonts/type1/p
+ublic/amsfonts/cm/cmbx6.pfb><E:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx
+9.pfb><E:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex9.pfb><E:/CTEX/Mi
+KTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><E:/CTEX/MiKTeX/fonts/type1/publi
+c/amsfonts/cm/cmmi6.pfb><E:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pf
+b><E:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><E:/CTEX/MiKTeX/fonts
+/type1/public/amsfonts/cm/cmr6.pfb><E:/CTEX/MiKTeX/fonts/type1/public/amsfonts/
+cm/cmr7.pfb><E:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><E:/CTEX/Mi
+KTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><E:/CTEX/MiKTeX/fonts/type1/publi
+c/amsfonts/cm/cmsy7.pfb><E:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pf
+b><E:/CTEX/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><E:/CTEX/MiKTeX/fonts/type
+1/urw/helvetic/uhvb8a.pfb><E:/CTEX/MiKTeX/fonts/type1/urw/helvetic/uhvbo8a.pfb>
+<E:/CTEX/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb><E:/CTEX/MiKTeX/fonts/type1
+/urw/helvetic/uhvro8a.pfb><E:/CTEX/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><E:/
+CTEX/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><E:/CTEX/MiKTeX/fonts/type1/urw/ti
+mes/utmri8a.pfb>
+Output written on main.pdf (5 pages, 253914 bytes).
 PDF statistics:
  103 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

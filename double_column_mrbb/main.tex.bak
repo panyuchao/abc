@@ -121,6 +121,8 @@
 
 \renewcommand{\algorithmicrequire}{\textbf{Input:}}
 
+\newcommand{\xuw}[1]{\textcolor{red}{(XUW: #1)}}
+
 \long\def\symbolfootnote[#1]#2{\begingroup%
 \def\thefootnote{\fnsymbol{footnote}}\footnote[#1]{#2}\endgroup}
 
@@ -135,11 +137,10 @@
 
 \begin{document}
 \firstpage{1}
-\title[Branch-and-Bound on MapReduce Platform]{Branch-and-Bound on MapReduce Platform}
-\author[Y. Wang and J. Zeng]{\bf Yuchao Pan,$^{\rm 1}$Yuxi Dong,$^{\rm 2}$ Jianyang Zeng$^{\rm 3,}$\footnote{To whom correspondence should be addressed.}, and Wei Xu$^{\rm 4}$}
+\title[A Distributed Computing Platform for Large-Scale Computational Protein Design]{A Distributed Computing Platform for Large-Scale Computational Protein Design}
+\author[Y. Pan and Y. Dong]{\bf Yuchao Pan,$^{\rm 1}$Yuxi Dong,$^{\rm 2}$ Jianyang Zeng$^{\rm 3,}$\footnote{To whom correspondence should be addressed.}, and Wei Xu$^{\rm 4}$}
 %
-\address{
-$^{\rm 1}$, $^{\rm 2}$, $^{\rm 3}$ and $^{\rm 4}$}
+\address{$^{\rm 1}$, $^{\rm 2}$, $^{\rm 3}$ and $^{\rm 4}$}
 
 \history{}
 
@@ -165,13 +166,18 @@ $^{\rm 1}$, $^{\rm 2}$, $^{\rm 3}$ and $^{\rm 4}$}
 
 \section{Results:}
 
-\section{Availability:}
+\section{Availability:} Our software is available and distributed open-source
+under the BSD license on the date that the paper is published.
+We will also provide a Amazon EC2 AMI virtual machine
+to allow people use our system in the public cloud.
 
 \section{Contact:} \href{zengjy321@tsinghua.edu.cn}{zengjy321@tsinghua.edu.cn}
-%
+
 \end{abstract}
 
+
 \vspace{-10pt}
+
 
 \input{introduction.tex}
 
@@ -180,45 +186,18 @@ $^{\rm 1}$, $^{\rm 2}$, $^{\rm 3}$ and $^{\rm 4}$}
 \input{optimization}
 
 
-\section{Results}
+\input{results}
 
 
-\section{Conclusion}\label{sec:conclusion}
+\input{conclusion}
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Acknowledgement}
 
 
 
 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%\section*{Availability}
-%
-%The source code of our algorithm is available by contacting the
-%authors, and is distributed open-source under the GNU Lesser
-%General Public License (Gnu, 2002).
-
-
-%\subsection{Application to NOE Assignment Using Only NOESY Data}
-%
-%report the \ha chemical shift prediction accuracy
-%
-%report side-chain assignment accuracy
-%
-%report NOE assignment accuracy and structure determination
-%results.
-%
-%\section{Conclusions}
-%
-%discuss why linear Gaussian distribution is sufficient in the
-%model?
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%
 
  %\clearpage
 %\bibliographystyle{agsm}
@@ -228,12 +207,5 @@ $^{\rm 1}$, $^{\rm 2}$, $^{\rm 3}$ and $^{\rm 4}$}
 \bibliography{./MyBibs/ref}
  \vspace{-12pt}
 
- %\begin{footnotesize}
-%
-%
-%
-%
-%
-%\end{footnotesize}
 
 \end{document}

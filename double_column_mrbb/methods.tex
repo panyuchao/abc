@@ -6,8 +6,9 @@ where $x_v\in X_v$ is the rotamer at residue position $v$, $\theta_v(x_v)$ is th
 
 In order to find the optimal solution of a NP-hard problem, we often need to search over a huge state space. As many popular methods to solve the CPD problem, firstly use dead-end elimination as a pre-filtering algorithm to prune the rotamers that are not part of the GMEC, and thus reduce the search space. Then we use branch-and-bound algorithm on a distributed computing platform to search the remain search space.
 
-\subsubsection{Branch-and-Bound}
-Branch-and-Bound (BnB) is a widely-used search algorithm for solving various combinatorial optimization problems. This algorithm constantly divides the state space into several smaller sub-spaces (this step is called \textit{branching}) and then calculate the bound for each sub-spaces (this step is called \textit{bounding}). After that, those sub-spaces which certainly not contain the optimal solution (i.e. the lower bound is larger than the known upper bound) are discarded.
+\subsubsection{Branch-and-Bound}\
+
+\noindent Branch-and-Bound (BnB) is a widely-used search algorithm for solving various combinatorial optimization problems. This algorithm constantly divides the state space into several smaller sub-spaces (this step is called \textit{branching}) and then calculate the bound for each sub-spaces (this step is called \textit{bounding}). After that, those sub-spaces which certainly not contain the optimal solution (i.e. the lower bound is larger than the known upper bound) are discarded.
 
 To be more specific, suppose we want to solve an optimization problem through minimizing an energy function over a state space $S$. The algorithm has two main steps:
 
@@ -24,7 +25,7 @@ Assume we the network contains $n$ vertices which are numbered from 1 to $n$, an
 \begin{algorithmic}[1]
 \Function{BranchAndBound}{$G=(V,E),X,\Theta$}
     \State $S_V \gets X_1\times X_2\times\dots\times X_n$
-    \State $GUB \gets \textsc{UpperBound}(X_V)$
+    \State $GUB \gets \textsc{UpperBound}(S_V)$
     \State $\textsc{Add}(Q, S_V)$
     \While{$Q$ is not empty}
         \State $S \gets \textsc{NextElement}(Q)$
@@ -48,8 +49,9 @@ Assume we the network contains $n$ vertices which are numbered from 1 to $n$, an
 
 Here $Q$ is usually a FIFO or priority queue, and we maintain a global variable $GUB$ to store the best solution. An efficient lower bound of a state space will be proposed in Section 2.2.2, and upper bound in Section 2.2.3.
 
-\subsubsection{MapReduce}
-MapReduce is a programming model proposed by Google which is used for massive parallel and distributed computing on large data sets. It is composed of the following two main steps:
+\subsubsection{MapReduce}\
+
+\noindent MapReduce is a programming model proposed by Google which is used for massive parallel and distributed computing on large data sets. It is composed of the following two main steps:
 
 \noindent \textbf{Map}: The input data is divided into $N$ parts. The code for processing each part and the data will be copied to a compute node.
 
@@ -57,8 +59,9 @@ MapReduce is a programming model proposed by Google which is used for massive pa
 
 What users need to do is just implement map and reduce functions. Map tells the platform how to process the data, and reduce tells how to combine the results.
 
-\subsubsection{Branch-and-Bound on MapReduce}
-If we take a look at the search tree of the algorithm, we can observe that the expansions of nodes on the same level are independent. Therefore, the branch procedure can be done parallel for a level of nodes. After that the bound procedure is done on all nodes expanded.
+\subsubsection{Branch-and-Bound on MapReduce}\
+
+\noindent If we take a look at the search tree of the algorithm, we can observe that the expansions of nodes on the same level are independent. Therefore, the branch procedure can be done parallel for a level of nodes. After that the bound procedure is done on all nodes expanded.
 
 This can be fit into the MapReduce model. In a MapReduce model, input data is a list of \texttt{(key, value)} pairs, which is first processed by \texttt{map} function. The \texttt{map} function takes each \texttt{(key, value)} pair as input, do some calculation on it and emits a list of \texttt{(key', value')} pairs. The outputs are then grouped by keys, and sent to the \texttt{reduce} function. The \texttt{reduce} function takes a key and a list of values as input, and outputs a list of \texttt{(key'', value'')} pairs.
 
@@ -86,7 +89,7 @@ In our design, we process each level of the search tree with one MapReduce job, 
 
     Let a piece of input of map be $(key, value)$. We set $key$ to be empty and let $value$ represent a node on the search tree, which includes $n+3$ fields. The first $3$ states are minimum upper bound, lower bound and upper bound. The following $n$ fields corresponds to the states of each vertex with $-1$ representing the vertex has not been searched yet.
 
-    In the map function we expand a node $k=\{GUB, LB, UB,$ $state_1, \dots, state_n\}$ to a list of nodes $L=\{k_1, \dots, k_m\}$, calculate lower bound and upper bound for each $k_i$ and finally update the minimum upper bound for each $k_i$. Thus the output nodes of each map function see a `local' view of the minimum upper bound. We assign each output node's $key$ field with a random integer which lies in $[0, r)$. The nodes with same $key$ will be sent to the same reduce.
+    In the map function we expand a node $k=\{GUB, LB, UB,$ $x_1, \dots, x_n\}$ to a list of nodes $L=\{k_1, \dots, k_m\}$, calculate lower bound and upper bound for each $k_i$ and finally update the minimum upper bound for each $k_i$. Thus the output nodes of each map function see a `local' view of the minimum upper bound. We assign each output node's $key$ field with a random integer which lies in $[0, r)$. The nodes with same $key$ will be sent to the same reduce.
 
     In the reduce function, nodes will share their local minimum upper bound. {\color{red}????}
 

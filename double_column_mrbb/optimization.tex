@@ -1,6 +1,6 @@
 \subsection{Optimization}
 
-\subsubsection{Local Dead-End Elimination Algorithm}\ 
+\subsubsection{Local Dead-End Elimination Algorithm}\
 
 The dead-end elimination (DEE) algorithm is an efficient method to eliminate infeasible variable states. For a variable $x_v$, and two variable states $x_v^i$ and $x_v^j$ in $X_v$, if the following condition is satisfied, then state $x_v^i$ can be eliminated, which reduces the search space.
 \begin{align}
@@ -23,7 +23,7 @@ By applying the DEE criterion in Eq. (3), we can eliminate a large number of inf
 
 Here, the DEE criterion is incorporated into each branch step. To distinguish it from most other DEE criteria that are applied before search algorithms (e.g. A*\cite[]{gainza2013osprey}), we call the criterion in Eq. (3) integrated into the branch step the \textit{local DEE criterion}.
 
-\subsubsection{Lower Bound}\ 
+\subsubsection{Lower Bound}\
 
 \noindent\textbf{Naive Lower Bound.}
 A naive lower bound of the energy function in protein design can be easily computed by considering the best possible rotamer assignment in each residue, which is
@@ -41,8 +41,7 @@ where we leave $(u,v)\in E$ out from the summation notation for simplifying the 
 g(X) = \sum_{v\in D(X)}\theta_v(x_v)+\sum_{u,v\in D(X)\wedge u<v}\theta_{uv}(x_u,x_v)
 \]
 
-\noindent\textbf{Efficient Lower Bound.}
-By observing the formula of the naive lower bound, we see that every edge-energy function is only used for the vertex that has the greater index. If we split $\theta_{uv}$ into two functions $\beta_{uv}$ and $\beta_{vu}$ where $\beta_{uv}(x_u,x_v)+\beta_{vu}(x_v,x_u)=\theta_{uv}(x_u,x_v)$ for all $x_u,x_v$, then the formula of (4) becomes
+\noindent\textbf{Efficient Lower Bound.} By observing the formula of the naive lower bound in Eq. (4), we see that every edge-energy function is only used for one vertex (i.e. the vertex has greater index in Eq. (4)). If we split $\theta_{uv}$ into two functions $\beta_{uv}$ and $\beta_{vu}$ where $\beta_{uv}(x_u,x_v)+\beta_{vu}(x_v,x_u)=\theta_{uv}(x_u,x_v)$ for all $x_u,x_v$, then the formula of (4) becomes
 \begin{align}
 \max & \ \ \sum_{v\in V}\min_{x_v\in X_v}\left(\theta_v(x_v)+\sum_{(u,v)\in E}\min_{x_u\in X_u}\beta_{uv}(x_u,x_v)\right) \\
 s.t. & \ \ \beta_{uv}(x_u,x_v)+\beta_{vu}(x_v,x_u)=\theta_{vu}(x_u,x_v) \notag \\
@@ -61,57 +60,31 @@ Since $\beta^*$ may not be the best functions for any state space, it is necessa
 
 If we compute $LB_2$ directly, then the time complexity is $O(n^2m^2)$, where $n$ is the number of mutable residues, and $m$ is the number of rotamers per residue. If we firstly compute a table $p$ that $p_{uv}(x_v)=\min_{x_u\in X_u}\beta_{uv}^*(x_u,x_v)$ with time $O(n^2m^2)$ and space $O(n^2m)$, then the time of computing $LB_2$ decrease to $O(n^2m)$.
 
-\noindent\textbf{Mini-Bucket.}
-% (http://www.ics.uci.edu/~csp/r169.pdf)
-The mini-bucket elimination (MBE) is a well-known approximation algorithm for graphical models, and it gives a bound when the induced width of the graph is too large. The idea of bucket elimination (BE) is to eliminate variables, and the pseudo-code is as follows.
+\noindent\textbf{Mini-Bucket.} The mini-bucket elimination (MBE) is a well-known approximation algorithm for graphical models \cite[]{dechter2003mini, rollon2010evaluating, rollon2006mini}, and it gives a bound when the induced width of the graph is too large. The idea of mini-bucket elimination is to eliminate variables, and the time and space complexity of MBE is $O(m^i)$ where $i$ is a user controlled parameter that restrict the size of the scopes of each functions.
 
-\begin{algorithm}[!h]
-\caption{Bucket Elimination}
-\begin{algorithmic}[1]
-\Function{BucketElimination}{$\mathcal{F},v$}
-    \State $\mathcal{B} \gets \{f\in\mathcal{F}|v\in var(f)\}$
-    \State $g \gets \mathcal{B}\Downarrow v$
-    \State $\mathcal{F} \gets (\mathcal{F}\setminus \mathcal{B})\cup\{g\}$
-    \State \textbf{return }$\mathcal{F}$
-\EndFunction
-\end{algorithmic}
-\end{algorithm}
+\subsubsection{Upper Bound}\
 
-There the operation $\mathcal{B}\Downarrow v$ means combine the functions in $\mathcal{B}$ with eliminating the variable $v$. The time and space complexity of the algorithm is exponential in the largest scope of all the functions that computed.
+Upper bound is different from lower bound, we often use a relatively better solution in $X$ as its upper bound. There are many meta-heuristic methods have been applied to it, such as Monte-Carlo with simulated annealing \cite[]{kuhlman2000native, voigt2000trading}, and genetic algorithms \cite[]{raha2000prediction}. These approaches can usually find a relatively better solution quickly but without any guarantees of accuracy. Thus, these methods provide us with an efficient upper bound.
 
-Mini-bucket elimination has a parameter $z$ which restrict the size of the scopes of each functions, and also restrict the time and space complexity.
-\begin{algorithm}
-\caption{Mini-Bucket Elimination}
-\begin{algorithmic}[1]
-\Function{BucketElimination}{$\mathcal{F},v$}
-    \State $\mathcal{B} \gets \{f\in\mathcal{F}|v\in var(f)\}$
-    \State $(Q_1,Q_2,...,Q_m) \gets \textsc{Partition}(\mathcal{B},z)$
-    \For {$i \gets 1$\textbf{ to }$m$}
-        \State $g_i\gets Q_i\Downarrow v$
-    \EndFor
-    \State $\mathcal{F} \gets (\mathcal{F}\setminus \mathcal{B})\cup\{g_1,g_2,...,g_m\}$
-    \State \textbf{return }$\mathcal{F}$
-\EndFunction
-\end{algorithmic}
-\end{algorithm}
+In our method, we choose simulated annealing as our upper bound algorithm. Simulated annealing (SA) is a generic probabilistic meta-heuristic method for the global optimization problem, and it is often used when the search space is discrete. The SA heuristic is started with an arbitrary initial state. At each step, consider a neighbouring state $s'$ of the current state $s$, and probabilistically decides between moving to $s'$ or staying in $s$. The probabilities ultimately lead the system to the states with lower energy.
 
-\textsc{Partition}$(\mathcal{B},z)$ means that divide $\mathcal{B}$ into parts $Q_1,Q_2,...,Q_m$ and $var(Q_i)\le z+1$ for $1\le i\le m$.
-
-For the current state space $X$, we eliminate all the variables in $U(X)$, and then summarize all the functions on $D(X)$, then we get another lower bound of state space $X$.
-
-\subsubsection{Upper Bound}\ 
-
-Different with lower bound, we make the upper bound of state space $X$ be a better solution in $X$. There are many meta-heuristic methods have been applied to it, such as Monte-Carlo with simulated annealing, and genetic algorithms. These approaches can usually find a relatively better solution quickly but without any guarantees of accuracy. Thus, these methods provide us with a efficient upper bound.
-
-In our method, we choose simulated annealing as our upper bound algorithm. The initial state of SA is according to $LB_2$, which means
+The initial state $\mathbf{x}^0$ of our SA heuristic is based on the lower bound function $LB_2$, which is
 \begin{align*}
-x_v^{0}\!=\!\arg\!\min_{x_v\in X_v}\left(\theta_v(x_v)\!+\!\sum_{u\in D(X)}\theta_{uv}(x_u,x_v)\!+\!\sum_{u\in U(X)}p_{uv}(x_v)\right)
+\mathbf{x}_v^0\!=\!\arg\!\min_{x_v\in X_v}\left(\theta_v(x_v)\!+\!\sum_{u\in D(X)}\theta_{uv}(x_u,x_v)\!+\!\sum_{u\in U(X)}p_{uv}(x_v)\right)
 \end{align*}
 
-Let $\mathbf{x}^{S}$ be the best solution that find by Simulated Annealing Algorithm, then
+Let $\mathbf{x}^{S}$ be the best solution found by Simulated Annealing Algorithm, then
 \begin{align*}
   UB(X)=g(\mathbf{x}^{S})
 \end{align*}
+
+The time complexity of the SA heuristic $T_{SA}$ is based on the number of iteration rounds $I$ and the time of calculating the energy function $T_{EF}$, that is $T_{SA}=I*T_{EF}$. Consider the current state $\mathbf{x}$ and a neighbouring state $\mathbf{x}'$, there is only one rotamer at some residue position is different, namely $\mathbf{x}=(x_1,x_2,...,x_i,...,x_n)$ and $\mathbf{x}'=(x_1,x_2,...,x_i',...,x_n)$ at some position $i$. We have already known the energy $g(\mathbf{x})$ of $\mathbf{x}$, and now we can compute the energy of the neighboring state $\mathbf{x}'$ as follows.
+\begin{align*}
+g(\mathbf{x}')=g(\mathbf{x})&-\left(\theta_i(x_i)+\sum_{j\neq i}\theta_{ji}(x_j,x_i)\right)\\
+&+\left(\theta_i(x_i')+\sum_{j\neq i}\theta_{ji}(x_j,x_i')\right)
+\end{align*}
+
+Thus the time $T_{EF}$ is optimized to $O(n)$ where $n$ is the number of mutable residues, and then $T_{SA}=O(n^2+I*n)$ where $n^2$ is the time of calculating the energy of the initial state.
 
 \subsection{Refinement on MapReduce}
     With some experiments we notice that each iteration can be done with a map-only job, in which we omit the reduce part. This significantly reduces running time since the shuffle between map and reduce will sort the data, which we do not need. However, this will cause many nodes not seeing the global minimum upper bound, which leads to fewer nodes discarded than in random grouping. To solve this, we use a \textit{parameter server}.
