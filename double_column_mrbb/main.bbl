@@ -6,6 +6,14 @@ Alvizo, O., Allen, B.~D., and Mayo, S.~L. (2007).
   engineering.
 \newblock {\em Biotechniques}, 42(1):31--35.
 
+\bibitem[Gainza et~al., 2013]{gainza2013osprey}
+Gainza, P., Roberts, K.~E., Georgiev, I., Lilien, R.~H., Keedy, D.~A., Chen,
+  C.-Y., Reza, F., Anderson, A.~C., Richardson, D.~C., Richardson, J.~S.,
+  et~al. (2013).
+\newblock Osprey: protein design with ensembles, flexibility, and provable
+  algorithms.
+\newblock {\em Methods in enzymology}, 523:87.
+
 \bibitem[Globerson and Jaakkola, 2008]{globerson2008fixing}
 Globerson, A. and Jaakkola, T.~S. (2008).
 \newblock Fixing max-product: Convergent message passing algorithms for map

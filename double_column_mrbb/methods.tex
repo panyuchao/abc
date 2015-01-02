@@ -4,29 +4,31 @@ The protein design problem can be described as a pairwise markov networks. All t
 \[ \mathbf{x^*} = \arg\min_{\mathbf{x}}\left(\sum_{v\in V}\theta_v(x_v) + \sum_{(u,v)\in E}\theta_{uv}(x_u,x_v)\right) \]
 where $x_v\in X_v$ is the rotamer at residue position $v$, $\theta_v(x_v)$ is the potential energy between the internal atoms of the rotamer, and $\theta_{uv}(x_u,x_v)$ is the potential energy between rotamer $x_u$ at residue position $u$ and $x_v$.
 
-In order to find the optimal solution of a NP-hard problem, we often need to search over a huge state space, 
+In order to find the optimal solution of a NP-hard problem, we often need to search over a huge state space. As many popular methods to solve the CPD problem, firstly use dead-end elimination as a pre-filtering algorithm to prune the rotamers that are not part of the GMEC, and thus reduce the search space. Then we use branch-and-bound algorithm on a distributed computing platform to search the remain search space.
 
-\subsection{Branch-and-Bound}
-Branch-and-Bound (BnB) is a widely-used search algorithm for solving various combinatorial optimization problems. This algorithm constantly divides the state space into several smaller sub-spaces (this step is called \textit{branching}) and then calculate the bound for each sub-spaces (this step is called \textit{bounding}). After that, those sub-spaces which certainly not contain the optimal solution (i.e. the lower bound is larger than the known upper bound) are discarded. 
+\subsubsection{Branch-and-Bound}
+Branch-and-Bound (BnB) is a widely-used search algorithm for solving various combinatorial optimization problems. This algorithm constantly divides the state space into several smaller sub-spaces (this step is called \textit{branching}) and then calculate the bound for each sub-spaces (this step is called \textit{bounding}). After that, those sub-spaces which certainly not contain the optimal solution (i.e. the lower bound is larger than the known upper bound) are discarded.
 
-To be more specific, suppose we want to solve an optimization problem through minimizing an energy function over a state space $S$. The algorithm has two main parts:
+To be more specific, suppose we want to solve an optimization problem through minimizing an energy function over a state space $S$. The algorithm has two main steps:
 
-\noindent \textit{branching}: In this step, the state space $S$ is split into two or more sub-space $S_1,S_2,\dots,S_m$ such that $S_1\cup S_2\cup\dots\cup S_m=S$ and $S_i\cap S_j=\emptyset$ for all $i\neq j$.
+\noindent \textbf{Branching}: In this step, the state space $S$ is split into two or more sub-space $S_1,S_2,\dots,S_m$ such that $S_1\cup S_2\cup\dots\cup S_m=S$ and $S_i\cap S_j=\emptyset$ for all $i\neq j$.
 
-\noindent \textit{bounding}: In this step, we compute the lower bound and upper bound of each sub-space $S_i$, denote by $LB(S_i)$ and $UB(S_i)$. Let $GUB=\min_{i}UB(S_i)$, then we can prune the sub-space $S_i$ if $LB(S_i)>GUB$, since there exists an element that is better than all elements of $S_i$.
+\noindent \textbf{Bounding}: In this step, we compute the lower bound and upper bound of each sub-space $S_i$, denote by $LB(S_i)$ and $UB(S_i)$. Let $GUB=\min_{1\le i\le m}UB(S_i)$ be the minimum upper bound, then we can prune the sub-space $S_i$ if $LB(S_i)>GUB$, since there exists an element that is better than all elements of $S_i$.
 
 The aforementioned combination of \textit{branching} and \textit{bounding} steps is recursively performed until the state space only contains a single element.
 
-\begin{algorithm}[h]
-\caption{Branch and Bound Algorithm}
+Assume we the network contains $n$ vertices which are numbered from 1 to $n$, and let $X_i$ denote the state set of vertex $i$. Here is the pseudo code of Branch-and-Bound algorithm.
+
+\begin{algorithm}[!h]
+\caption{Branch-and-Bound Algorithm}
 \begin{algorithmic}[1]
-\Function{BranchAndBound}{$G=(V,E,X,\theta)$}
+\Function{BranchAndBound}{$G=(V,E),X,\Theta$}
     \State $S_V \gets X_1\times X_2\times\dots\times X_n$
     \State $GUB \gets \textsc{UpperBound}(X_V)$
-    \State $\textsc{Add}(Q,X_V)$
+    \State $\textsc{Add}(Q, S_V)$
     \While{$Q$ is not empty}
         \State $S \gets \textsc{NextElement}(Q)$
-        \If {$\textsc{LowerBound}(X)\geq GUB$}
+        \If {$\textsc{LowerBound}(S)\geq GUB$}
             \State \textbf{continue}
         \EndIf
         \State $(S_1,S_2,...,S_m) \gets \textsc{Branch}(S)$
@@ -39,30 +41,28 @@ The aforementioned combination of \textit{branching} and \textit{bounding} steps
             \EndIf
         \EndFor
     \EndWhile
-    \State \textbf{return }$best$
+    \State \textbf{return }$GUB$
 \EndFunction
 \end{algorithmic}
 \end{algorithm}
 
-Branch and Bound usually search the solution tree with BFS or optimum-cost-first method. Each live node has only one chance to be an expansion node, which produces all child nodes in one visit. The nodes which lead to infeasible or non-optimal solutions in the child nodes will be thrown away. The nodes left will be added to the list of live nodes.
+Here $Q$ is usually a FIFO or priority queue, and we maintain a global variable $GUB$ to store the best solution. An efficient lower bound of a state space will be proposed in Section 2.2.2, and upper bound in Section 2.2.3.
 
-\subsection{MapReduce}
-MapReduce is a programming model proposed by Google which is used for massive parallel computing.
+\subsubsection{MapReduce}
+MapReduce is a programming model proposed by Google which is used for massive parallel and distributed computing on large data sets. It is composed of the following two main steps:
 
-MapReduce is composed of the following two main steps:
-\begin{itemize}
-\item[1.]	Map procedure: The input data is divided into $N$ parts. The code for processing each part and the data will be copied to a compute node. The compute nodes run parallel and return the result.
-\item[2.]	Reduce procedure: The result of step $1$ is distributed to $M$ compute nodes. The nodes run parallel and return the result.
-\end{itemize}
+\noindent \textbf{Map}: The input data is divided into $N$ parts. The code for processing each part and the data will be copied to a compute node.
+
+\noindent \textbf{Reduce}: The result of \textit{map} step is distributed to $M$ compute nodes. The nodes run parallel and return the result.
 
 What users need to do is just implement map and reduce functions. Map tells the platform how to process the data, and reduce tells how to combine the results.
 
-\subsection{Branch-and-Bound on MapReduce}
-    If we take a look at the search tree of the algorithm, we can observe that the expansions of nodes on the same level are independent. Therefore, the branch procedure can be done parallel for a level of nodes. After that the bound procedure is done on all nodes expanded.
+\subsubsection{Branch-and-Bound on MapReduce}
+If we take a look at the search tree of the algorithm, we can observe that the expansions of nodes on the same level are independent. Therefore, the branch procedure can be done parallel for a level of nodes. After that the bound procedure is done on all nodes expanded.
 
-    This can be fit into the MapReduce model. In a MapReduce model, input data is a list of \texttt{(key, value)} pairs, which is first processed by \texttt{map} function. The \texttt{map} function takes each \texttt{(key, value)} pair as input, do some calculation on it and emits a list of \texttt{(key', value')} pairs. The outputs are then grouped by keys, and sent to the \texttt{reduce} function. The \texttt{reduce} function takes a key and a list of values as input, and outputs a list of \texttt{(key'', value'')} pairs.
+This can be fit into the MapReduce model. In a MapReduce model, input data is a list of \texttt{(key, value)} pairs, which is first processed by \texttt{map} function. The \texttt{map} function takes each \texttt{(key, value)} pair as input, do some calculation on it and emits a list of \texttt{(key', value')} pairs. The outputs are then grouped by keys, and sent to the \texttt{reduce} function. The \texttt{reduce} function takes a key and a list of values as input, and outputs a list of \texttt{(key'', value'')} pairs.
 
-    In our design, we process each level of the search tree with one MapReduce job, where we call it one iteration. In the $i$th iteration, we expand the $i$th level of nodes. Therefore the whole search needs $n$ iterations. For each iteration, the \texttt{map} function is designed as follows
+In our design, we process each level of the search tree with one MapReduce job, where we call it one iteration. In the $i$th iteration, we expand the $i$th level of nodes. Therefore the whole search needs $n$ iterations. For each iteration, the \texttt{map} function is designed as follows
 \begin{algorithm}
 \caption{Map}
 \begin{algorithmic}[1]
@@ -81,7 +81,6 @@ What users need to do is just implement map and reduce functions. Map tells the 
 \EndFunction
 \end{algorithmic}
 \end{algorithm}
-\newpage
 
     When we come to the \texttt{reduce} function, we should iterate over all nodes expanded to get the minimum upper bound. This results in only one reduce in each job, which significantly {\color{red} reduces} parallelism. We use what we call \textit{random grouping} to solve this.
 
@@ -103,4 +102,3 @@ What users need to do is just implement map and reduce functions. Map tells the 
 
     For instance, select $r$ be 3-5 times the number of machines, probably 200. If we make $t_2$ be 10000, then we have
     \[p\geq 1-200(1-1/200)^{10000}=1\]
-\newpage 

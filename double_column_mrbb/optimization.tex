@@ -1,7 +1,7 @@
-\section{Optimization}
+\subsection{Optimization}
 
-\subsection{Local Dead-End Elimination Algorithm}
-The dead-end elimination (DEE) algorithm is an efficient method to eliminate infeasible variable state{\color{red}s}. For a variable $x_v$, and two variable states $x_v^i$ and $x_v^j$ in $X_v$, if the following condition is satisfied, then state $x_v^i$ can be eliminated, which reduces the search space.
+\subsubsection{Local Dead-End Elimination Algorithm}
+The dead-end elimination (DEE) algorithm is an efficient method to eliminate infeasible variable states. For a variable $x_v$, and two variable states $x_v^i$ and $x_v^j$ in $X_v$, if the following condition is satisfied, then state $x_v^i$ can be eliminated, which reduces the search space.
 \begin{align}
 & \theta_v(x_v^i)+\sum_{(u,v)\in E}\min_{x_u\in X_u}\theta_{uv}(x_u,x_v^i) \notag \\
 >\ \ & \theta_v(x_v^j)+\sum_{(u,v)\in E}\max_{x_u\in X_u}\theta_{uv}(x_u,x_v^j)
@@ -12,31 +12,32 @@ The more powerful criterion that improved by \cite{goldstein1994efficient} is
 \theta_v(x_v^i)-\theta_v(x_v^j)+\sum_{(u,v)\in E}\min_{x_u\in X_u}[\theta_{uv}(x_u,x_v^i)-\theta_{uv}(x_u,x_v^j)] > 0
 \end{align}
 
-We apply the Goldstein DEE criterion in (2) in the function \textsc{Branch}. Let $D(X)$ be the set of variables that have been searched, and $U(X)=V\setminus D(X)$ be the set of variables which has not been determined yet. Consider two variable states $x_v^i$ and $x_v^j$ in an undetermined variable $x_v$, the Goldstein DEE criterion we use in the \textsc{Branch} functions is
+We apply the Goldstein DEE criterion in (2) to the function \textsc{Branch}. Let $D(X)$ be the set of variables that have been searched, and $U(X)=V\setminus D(X)$ be the set of variables which has not been determined yet. Consider two variable states $x_v^i$ and $x_v^j$ in an undetermined variable $x_v$, the Goldstein DEE criterion we use in the \textsc{Branch} functions is
 \begin{align}
 & \theta_v(x_v^i)-\theta_v(x_v^j)+\sum_{(u,v)\in E\wedge u\in D(X)}[\theta_{uv}(x_u,x_v^i)-\theta_{uv}(x_u,x_v^j)] \notag \\
 & +\sum_{(u,v)\in E\wedge u\in U(X)}\min_{x_u\in X_u}[\theta_{uv}(x_u,x_v^i)-\theta_{uv}(x_u,x_v^j)] > 0
 \end{align}
 
-So that we can eliminate a large number of infeasible variable states, and thus significantly reduces the branch space.
+By applying the DEE criterion in Eq. (3), we can eliminate a large number of infeasible variable states, and thus significantly reduces the branch space.
 
-Here, ...
+Here, the DEE criterion is incorporated into each branch step. To distinguish it from most other DEE criteria that are applied before search algorithms (e.g. A*\cite[]{gainza2013osprey}), we call the criterion in Eq. (3) integrated into the branch step the \textit{local DEE criterion}.
 
-\subsection{Lower Bound}
+\subsubsection{Lower Bound}
 
 \noindent\textbf{Naive Lower Bound.}
-Firstly we have a naive lower bound, the heuristic function is
+A naive lower bound of the energy function in protein design can be easily computed by considering the best possible rotamer assignment in each residue, which is
 \begin{align}
-\sum_{v\in V}\min_{x_v\in X_v}\left(\theta_v(x_v)+\sum_{(u,v)\in E\wedge u<v}\min_{x_u\in X_u}\theta_{vu}(x_v,x_u)\right)
+\sum_{v\in V}\min_{x_v\in X_v}\left(\theta_v(x_v)+\sum_{u<v\wedge(u,v)\in E}\min_{x_u\in X_u}\theta_{uv}(x_u,x_v)\right)
 \end{align}
-and the form of the current state space $X$ is
+
+That is, the naive lower bound of the current state space $X$ can be written as
 \begin{align}
 LB_1(X)=&g(X)+\sum_{v\in U(x)}\min_{x_v\in X_v}\left(\theta_v(x_v)+\sum_{u\in D(X)}\theta_{uv}(x_u,x_v)\notag\right. \\
 &\left.+\sum_{u<v\wedge u\in U(X)}\min_{x_u\in X_u}\theta_{uv}(x_u,x_v)\right)
 \end{align}
-there we leave $(u,v)\in E$ out from the summation notation for convenience, and $g(X)$ is the energy that has determined, that is
+where we leave $(u,v)\in E$ out from the summation notation for simplifying the expression, and $g(X)$ is the energy of the determined variables (i.e. those residues in which the rotamers have been determined), that is
 \[
-g(X) = \sum_{v\in D(X)}\theta_v(x_v)+\sum_{u\in D(X)\wedge v\in D(X)}\theta_{uv}(x_u,x_v)
+g(X) = \sum_{v\in D(X)}\theta_v(x_v)+\sum_{u,v\in D(X)\wedge u<v}\theta_{uv}(x_u,x_v)
 \]
 
 \noindent\textbf{Efficient Lower Bound.}
@@ -49,7 +50,7 @@ s.t. & \ \ \beta_{uv}(x_u,x_v)+\beta_{vu}(x_v,x_u)=\theta_{vu}(x_u,x_v) \notag \
 
 The above optimization problem is a convex dual of MAPLPR, which can be solved by Convergent Message Passing Algorithms \cite[]{globerson2008fixing}.
 
-If we compute the best functions $\beta^*$, then the lower bound of state space $X$ becomes
+If we compute the best functions $\beta^*$, then the lower bound of the current state space $X$ becomes
 \begin{align}
 LB_2(X)=&g(X)+\sum_{v\in U(X)}\min_{x_v\in X_v}\left(\theta_v(x_v)+\sum_{u\in D(X)}\theta_{uv}(x_u,x_v)\right. \notag \\
 &\left.+\sum_{u\in U(X)}\min_{x_u\in X_u}\beta_{uv}^*(x_u,x_v)\right)
@@ -57,7 +58,7 @@ LB_2(X)=&g(X)+\sum_{v\in U(X)}\min_{x_v\in X_v}\left(\theta_v(x_v)+\sum_{u\in D(
 
 Since $\beta^*$ may not be the best functions for any state space, it is necessary because we can not compute it for all the searched state space.
 
-If we compute $LB_2$ directly, then the time complexity is $O(n^2m^2)$. If we firstly compute a table $p$ that $p_{uv}(x_v)=\min_{x_u\in X_u}\beta_{uv}^*(x_u,x_v)$ with time $O(n^2m^2)$ and space $O(n^2m)$, then the time of computing $LB_2$ decrease to $O(n^2m)$.
+If we compute $LB_2$ directly, then the time complexity is $O(n^2m^2)$, where $n$ is the number of mutable residues, and $m$ is the number of rotamers per residue. If we firstly compute a table $p$ that $p_{uv}(x_v)=\min_{x_u\in X_u}\beta_{uv}^*(x_u,x_v)$ with time $O(n^2m^2)$ and space $O(n^2m)$, then the time of computing $LB_2$ decrease to $O(n^2m)$.
 
 \ \\
 
@@ -99,7 +100,7 @@ Mini-bucket elimination has a parameter $z$ which restrict the size of the scope
 
 For the current state space $X$, we eliminate all the variables in $U(X)$, and then summarize all the functions on $D(X)$, then we get another lower bound of state space $X$.
 
-\subsection{Upper Bound}
+\subsubsection{Upper Bound}
 Different with lower bound, we make the upper bound of state space $X$ be a better solution in $X$. There are many algorithm for finding a better solution of a problem, such as Simulated Annealing (SA), Genetic Algorithm.
 
 We use Simulated Annealing as our upper bound algorithm. The initial state of SA is according to $LB_2$, which means
