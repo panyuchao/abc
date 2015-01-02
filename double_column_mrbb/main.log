@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.11)  2 JAN 2015 19:53
+This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.11)  2 JAN 2015 19:59
 entering extended mode
 **C:/Users/IIIS/Desktop/abc/double_column_mrbb/main.tex
 (C:/Users/IIIS/Desktop/abc/double_column_mrbb/main.tex
@@ -242,19 +242,19 @@ LaTeX Warning: Unused global option(s):
     [singlecolumdfsn].
 
 (C:\Users\IIIS\Desktop\abc\double_column_mrbb\main.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 138.
-LaTeX Font Info:    ... okay on input line 138.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 138.
-LaTeX Font Info:    ... okay on input line 138.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 138.
-LaTeX Font Info:    ... okay on input line 138.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 138.
-LaTeX Font Info:    ... okay on input line 138.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 138.
-LaTeX Font Info:    ... okay on input line 138.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 138.
-LaTeX Font Info:    ... okay on input line 138.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 138.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 139.
+LaTeX Font Info:    ... okay on input line 139.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 139.
+LaTeX Font Info:    ... okay on input line 139.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 139.
+LaTeX Font Info:    ... okay on input line 139.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 139.
+LaTeX Font Info:    ... okay on input line 139.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 139.
+LaTeX Font Info:    ... okay on input line 139.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 139.
+LaTeX Font Info:    ... okay on input line 139.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 139.
 
 
 (E:\CTEX\MiKTeX\tex\latex\psnfss\ot1ptm.fd
@@ -273,101 +273,101 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 \MPnumerator=\count121
 \everyMPtoPDFconversion=\toks32
 )
-Package crop Info: requested driver: `' on input line 138.
-Package crop Info: detected driver: `pdftex' on input line 138.
-Package crop Info: using `pdftex' graphics driver on input line 138.
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 149.
+Package crop Info: requested driver: `' on input line 139.
+Package crop Info: detected driver: `pdftex' on input line 139.
+Package crop Info: using `pdftex' graphics driver on input line 139.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 150.
 
  (E:\CTEX\MiKTeX\tex\latex\psnfss\ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <9> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 149.
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 150.
 LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <9> not available
-(Font)              Font shape `OT1/phv/b/it' tried instead on input line 149.
+(Font)              Font shape `OT1/phv/b/it' tried instead on input line 150.
 LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <9> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 149.
+(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 150.
 LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <19> not available
-(Font)              Font shape `OT1/phv/b/it' tried instead on input line 149.
+(Font)              Font shape `OT1/phv/b/it' tried instead on input line 150.
 LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <19> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 149.
+(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 150.
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <8> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 149.
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 150.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 149.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 150.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <16> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 149.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 150.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <13> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 149.
-LaTeX Font Info:    Calculating math sizes for size <13> on input line 149.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 150.
+LaTeX Font Info:    Calculating math sizes for size <13> on input line 150.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <13> not available
-(Font)              size <12> substituted on input line 149.
+(Font)              size <12> substituted on input line 150.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <6.5> not available
-(Font)              size <6> substituted on input line 149.
+(Font)              size <6> substituted on input line 150.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <13> not available
-(Font)              size <12> substituted on input line 149.
+(Font)              size <12> substituted on input line 150.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <6.5> not available
-(Font)              size <6> substituted on input line 149.
+(Font)              size <6> substituted on input line 150.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <13> not available
-(Font)              size <12> substituted on input line 149.
+(Font)              size <12> substituted on input line 150.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <6.5> not available
-(Font)              size <6> substituted on input line 149.
+(Font)              size <6> substituted on input line 150.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 149.
+LaTeX Font Info:    Try loading font information for U+msa on input line 150.
 (E:\CTEX\MiKTeX\tex\latex\amsfonts\umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 149.
+LaTeX Font Info:    Try loading font information for U+msb on input line 150.
 
 (E:\CTEX\MiKTeX\tex\latex\amsfonts\umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-LaTeX Font Info:    Calculating math sizes for size <9.09996> on input line 149
+LaTeX Font Info:    Calculating math sizes for size <9.09996> on input line 150
 .
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <4.54997> not available
-(Font)              size <5> substituted on input line 149.
+(Font)              size <5> substituted on input line 150.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <4.54997> not available
-(Font)              size <5> substituted on input line 149.
+(Font)              size <5> substituted on input line 150.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <4.54997> not available
-(Font)              size <5> substituted on input line 149.
+(Font)              size <5> substituted on input line 150.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <7.5> not available
-(Font)              size <7> substituted on input line 149.
+(Font)              size <7> substituted on input line 150.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <7.5> not available
-(Font)              size <7> substituted on input line 149.
+(Font)              size <7> substituted on input line 150.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <7.5> not available
-(Font)              size <7> substituted on input line 149.
+(Font)              size <7> substituted on input line 150.
 
 
-Underfull \hbox (badness 10000) detected at line 149
+Underfull \hbox (badness 10000) detected at line 150
 []
  []
 
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <8> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 165.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 166.
 (C:\Users\IIIS\Desktop\abc\double_column_mrbb\introduction.tex
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 1.
@@ -387,26 +387,25 @@ Underfull \hbox (badness 1173) in paragraph at lines 36--45
  []
 
 
-Underfull \hbox (badness 1248) in paragraph at lines 79--85
-\OT1/ptm/m/n/9 MapReduce () framework. The second approach is based on
- []
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Font Info:    Try loading font information for OMS+phv on input line 85.
+LaTeX Font Info:    Try loading font information for OMS+phv on input line 78.
 
 (E:\CTEX\MiKTeX\tex\latex\psnfss\omsphv.fd
 File: omsphv.fd 
 )
 LaTeX Font Info:    Font shape `OMS/phv/m/n' in size <7> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 85.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 78.
  [1
 
 {E:/CTEX/UserData/pdftex/config/pdftex.map{Unicode.sfd}{UGBK.sfd}}
 
 
 ]
+Underfull \hbox (badness 1248) in paragraph at lines 79--85
+\OT1/ptm/m/n/9 MapReduce () framework. The second approach is based on
+ []
+
 Missing character: There is no â in font ptmr7t!
 Missing character: There is no € in font ptmr7t!
 Missing character: There is no “ in font ptmr7t!
@@ -449,7 +448,24 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <8> not available
+(Font)              Font shape `OT1/phv/b/it' tried instead on input line 56.
+LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <8> not available
+(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 56.
 
+Overfull \hbox (261.0pt too wide) has occurred while \output is active
+[][] 
+ []
+
+
+Overfull \vbox (1.0pt too high) has occurred while \output is active []
+
+
+Overfull \hbox (261.0pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[2]
 Underfull \hbox (badness 1205) in paragraph at lines 60--61
 []\OT1/ptm/m/n/9 What users need to do is just implement map and reduce
  []
@@ -458,29 +474,10 @@ LaTeX Font Info:    Try loading font information for OT1+pcr on input line 66.
 (E:\CTEX\MiKTeX\tex\latex\psnfss\ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <8> not available
-(Font)              Font shape `OT1/phv/b/it' tried instead on input line 67.
-LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <8> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 67.
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Overfull \hbox (261.0pt too wide) has occurred while \output is active
-[][] 
- []
-
-
-Overfull \vbox (1.0pt too high) has occurred while \output is active []
-
-
-Overfull \hbox (261.0pt too wide) has occurred while \output is active
-[][] 
- []
-
-[2]) (C:\Users\IIIS\Desktop\abc\double_column_mrbb\optimization.tex
-Overfull \hbox (6.56898pt too wide) in paragraph at lines 14--14
-[] 
- []
-
-
+)
+(C:\Users\IIIS\Desktop\abc\double_column_mrbb\optimization.tex
 Overfull \hbox (261.0pt too wide) has occurred while \output is active
 [][] 
  []
@@ -489,6 +486,11 @@ Overfull \hbox (261.0pt too wide) has occurred while \output is active
 Overfull \vbox (1.0pt too high) has occurred while \output is active []
 
  [3]
+Overfull \hbox (6.56898pt too wide) in paragraph at lines 14--14
+[] 
+ []
+
+
 Overfull \hbox (2.9038pt too wide) in paragraph at lines 38--38
 [] 
  []
@@ -505,11 +507,6 @@ then the time complexity is
  []
 
 
-Overfull \hbox (6.10432pt too wide) in paragraph at lines 74--74
-[] 
- []
-
-
 Overfull \hbox (261.0pt too wide) has occurred while \output is active
 [][] 
  []
@@ -522,91 +519,17 @@ Overfull \hbox (261.0pt too wide) has occurred while \output is active
 [][] 
  []
 
-[4]) (C:\Users\IIIS\Desktop\abc\double_column_mrbb\results.tex)
+[4]
+Overfull \hbox (6.10432pt too wide) in paragraph at lines 74--74
+[] 
+ []
+
+) (C:\Users\IIIS\Desktop\abc\double_column_mrbb\results.tex)
 (C:\Users\IIIS\Desktop\abc\double_column_mrbb\conclusion.tex)
 (C:\Users\IIIS\Desktop\abc\double_column_mrbb\main.bbl
 Underfull \hbox (badness 1708) in paragraph at lines 60--66
 \OT1/ptm/m/n/9 of heterotrimeric collagen peptides with a built-in cystine-
  []
-
-
-Underfull \hbox (badness 3019) in paragraph at lines 110--114
-\OT1/ptm/m/n/9 accuracy for speed: A quantitative comparison of search
- []
-
-)
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Extra height:21.85844pt when 599.97743pt
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Extra height:21.85844pt when 600.97743pt
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Extra height:21.85844pt when 601.97743pt
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Extra height:21.85844pt when 602.97743pt
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Extra height:21.85844pt when 603.97743pt
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Extra height:-0.14156pt when 604.97743pt
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Extra height:-0.14156pt when 605.97743pt
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Extra height:-0.14156pt when 606.97743pt
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Extra height:-0.14156pt when 607.97743pt
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Extra height:-0.14156pt when 608.97743pt
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Extra height:-0.14156pt when 609.97743pt
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Extra height:-0.14156pt when 610.97743pt
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Extra height:-0.14156pt when 611.97743pt
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Extra height:-0.14156pt when 612.97743pt
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Extra height:-0.14156pt when 613.97743pt
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Extra height:-0.14156pt when 614.97743pt
-Extra height:0.0pt when 615.97743pt
-(2)Left:615.97743pt Right:605.45586pt Output:615.97743pt
-- LAST -
-Extra skip:0.0pt
-Left:615.97743pt
-Right:605.45586pt
-Output:615.97743pt
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Overfull \hbox (261.0pt too wide) has occurred while \output is active
@@ -617,7 +540,84 @@ Overfull \hbox (261.0pt too wide) has occurred while \output is active
 Overfull \vbox (1.0pt too high) has occurred while \output is active []
 
  [5]
-(C:\Users\IIIS\Desktop\abc\double_column_mrbb\main.aux)
+Underfull \hbox (badness 3019) in paragraph at lines 110--114
+\OT1/ptm/m/n/9 accuracy for speed: A quantitative comparison of search
+ []
+
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+Extra height:9.85844pt when 202.92921pt
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+Extra height:9.85844pt when 203.92921pt
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+Extra height:9.85844pt when 204.92921pt
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+Extra height:9.85844pt when 205.92921pt
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+Extra height:9.85844pt when 206.92921pt
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+Extra height:9.85844pt when 207.92921pt
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+Extra height:0.0pt when 208.92921pt
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+(2)Left:208.92921pt Right:196.85844pt Output:208.92921pt
+- LAST -
+Extra skip:0.0pt
+Left:208.92921pt
+Right:196.85844pt
+Output:208.92921pt
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (261.0pt too wide) has occurred while \output is active
+[][] 
+ []
+
+
+Overfull \vbox (1.0pt too high) has occurred while \output is active []
+
+
+Overfull \hbox (261.0pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[6
+
+] (C:\Users\IIIS\Desktop\abc\double_column_mrbb\main.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
@@ -626,11 +626,11 @@ LaTeX Font Warning: Size substitutions with differences
 Here is how much of TeX's memory you used:
  3753 strings out of 495362
  47165 string characters out of 3184022
- 127979 words of memory out of 3000000
+ 113979 words of memory out of 3000000
  6800 multiletter control sequences out of 15000+200000
  51208 words of font info for 110 fonts, out of 3000000 for 9000
  18 hyphenation exceptions out of 8191
- 36i,11n,26p,672b,298s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,11n,26p,672b,300s stack positions out of 5000i,500n,10000p,200000b,50000s
 {E:/CTEX/MiKTeX/fonts/enc/dvips/fontname/8r.enc}<E:/CTEX/MiKTeX/fonts/type1/p
 ublic/amsfonts/cm/cmbx6.pfb><E:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx
 9.pfb><E:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex9.pfb><E:/CTEX/Mi
@@ -647,9 +647,9 @@ b><E:/CTEX/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><E:/CTEX/MiKTeX/fonts/type
 /urw/helvetic/uhvro8a.pfb><E:/CTEX/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><E:/
 CTEX/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><E:/CTEX/MiKTeX/fonts/type1/urw/ti
 mes/utmri8a.pfb>
-Output written on main.pdf (5 pages, 253914 bytes).
+Output written on main.pdf (6 pages, 255093 bytes).
 PDF statistics:
- 103 PDF objects out of 1000 (max. 8388607)
+ 106 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
