@@ -1,4 +1,5 @@
 \documentclass{article}
+\usepackage{xspace}
 \usepackage{setspace}
 \usepackage{fancyhdr}
 \usepackage{lastpage}
@@ -16,6 +17,7 @@
     \lstset{language=C++}
     \lstset{breaklines}
     \lstset{extendedchars=false}
+\newcommand{\todo}[1]{{\textcolor{red}{#1}}\xspace}
 
 % In case you need to adjust margins:
 \topmargin=-0.45in      %
@@ -57,17 +59,19 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Begin edit from here
 
-\input{introduction.tex}
 
-\input{methods}
+\input{1_introduction}
 
-\input{optimization}
+\input{2_methods}
 
-\input{results}
+\input{3_distributed_bb}
 
-\input{conclusion}
+\input{4_results}
 
-\bibliography{./MyBibs/ref}
+\input{5_conclusion}
+
+\bibliographystyle{apalike}
+\bibliography{ref}
 
 % End edit to here
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

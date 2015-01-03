@@ -1,0 +1,39 @@
+\section{Experiments and Results}
+
+In this section, we evaluate the performance and scalability of our system.
+
+To demostrate the scalability of our algorithm, we show that we successfully solved four protein design problems that no other exact algorithms can do.  Also we show that our system speed up linearly with the number of nodes. We also compare the performance of our distributed approaches with existing algorithms by repeating the same set of protein design problems.  We can achieve significant speed up over single node solutions in a moderate-sized problems.  Then we analyze the performance gains from various optimizations in our system using a set of micro-benchmarks.  Finally, we demostrate the fault tolerance capability of our system.
+
+All experiments, except for the single-node experiments, are performed on a cluster of XX nodes.  Each node has two Intel Xeon E5-2620 (6-core, 2GHz) processors and 128GB RAM.  Each nodes has three 3TB disks used in hadoop file system.  The nodes are interconnected with 1Gbps ethernet.  All nodes run commodity CentOS 6.5.  Our system is implemented in Java on top of Apache Hadoop X.X.  The state server is implemented using Ruby on Rails framework and runs on the same server configuration.  The single node experiment is done on a node with 512GB RAM to allow the legacy single-node algorithm to scale as much as possible.
+
+\subsection{Scalability}
+
+\subsubsection{Scale to a larger protein}
+
+\todo{show the X problems that legacy algorithm cannot solve.  analyze why (basically, how many branches are generated, and how much RAM it takes)}
+
+\subsubsection{Speed-up with number of nodes}\
+
+\todo{1-XX machines experiments, with all optimizations, showing linear speed up}
+
+\subsection{Performance}
+
+In this section, we compare both approaches.
+
+\todo{a table showing running time for different algorithms}
+
+\todo{explain the job setup overhead}
+
+\todo{analyzing the performance difference between random grouping and state server}
+
+We argue that although the state server approach is more effiecient than the random grouping approach, the latter has the advantage of being fully compatible with legacy MapReduce framework, and thus more applicable with Platform as a Service (PaaS) style services that only provide a MapReduce programming interface without allowing the \texttt{map} functions to contact the outside world.
+
+\subsection{Effectiveness of Algorithm Optimization}\
+
+\todo{how to do this?  how about disabling each optimization and see the results? (using a single design problem)}
+
+\subsection{Fault Tolerance}\
+
+\todo{kill nodes and show how much longer it takes. }
+
+\todo{kill the state server} 

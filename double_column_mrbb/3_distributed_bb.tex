@@ -1,0 +1,76 @@
+\section{Distributed Branch-and-Bound}
+
+\subsection{Baseline System: Branch-and-Bound on MapReduce}\
+
+\subsubsection{MapReduce}\
+
+\noindent MapReduce~\cite{} is a programming model proposed by Google which is used for massive parallel and distributed computing on large data sets. It is composed of the following two main steps:
+
+\noindent \textbf{Map}: The input data is divided into $N$ parts. The code for processing each part and the data will be copied to a compute node.
+
+\noindent \textbf{Reduce}: The result of \textit{map} step is distributed to $M$ compute nodes. The nodes run parallel and return the result.
+
+What users need to do is just implement map and reduce functions. Map tells the platform how to process the data, and reduce tells how to combine the results.
+
+\todo{talk about the advantage of map reduce: efficiency on commodity hardware, fault tolerance, scalable, etc. }
+
+\subsubsection{Branch-and-Bound on MapReduce}\
+
+\noindent If we take a look at the search tree of the algorithm, we can observe that the expansions of nodes on the same level are independent. Therefore, the branch procedure can be done parallel for a level of nodes. After that the bound procedure is done on all nodes expanded.
+
+This can be fit into the MapReduce model. In a MapReduce model, input data is a list of \texttt{(key, value)} pairs, which is first processed by \texttt{map} function. The \texttt{map} function takes each \texttt{(key, value)} pair as input, do some calculation on it and emits a list of \texttt{(key', value')} pairs. The outputs are then grouped by keys, and sent to the \texttt{reduce} function. The \texttt{reduce} function takes a key and a list of values as input, and outputs a list of \texttt{(key'', value'')} pairs.
+
+In our design, we process each level of the search tree with one MapReduce job, where we call it one iteration. In the $i$th iteration, we expand the $i$th level of nodes. Therefore the whole search needs $n$ iterations. For each iteration, the \texttt{map} function is designed as follows
+\begin{algorithm}
+\caption{Map}
+\begin{algorithmic}[1]
+\Function{Map}{$Key, Value, Context$}
+    \State $S \gets Value$
+    \State $(S_1,S_2,...,S_m) \gets \textsc{Branch}(X)$
+    \For {$i \gets 1$\textbf{ to }$m$}
+        \State $best \gets \min(GUB, \textsc{UpperBound}(S_i))$
+    \EndFor
+    \For {$i \gets 1$\textbf{ to }$m$}
+        \If {$\textsc{LowerBound}(S_i) < GUB$}
+            \State $Context.write(X)$
+        \EndIf
+    \EndFor
+    \State \textbf{return }$best$
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+
+After each \texttt{map} function processes the brach(es) assigned, we need to allow all \texttt{map} functions to exchange their results to get global miminum upper bound. There are two major problems with this global upper bound update: 1) we need to wait for \emph{all} upper bounds from the \texttt{map} functions. In other words, we need to apply a \emph{barrier} after the \texttt{map} executions. The problem with barrier is that we the slowest tasks determine the overall speed of the entire system. 2) to compute the global minimum upper bound, we need to send all local bound to a single place, which results in a single \texttt{reduce} task, significantly lowering the level of parallelism.
+
+In order to eliminate the two bottlenecks of parallel solution, we used the following two approaches. In the first approach we use what we call \textit{random grouping} to solve this problem. We can retain full compatibility with existing MapReduce framework with this approach. In the second approach, we added a global state server to manage the global upper bound and use asynchronous communication paradigm and eventual consistency to increase the level of parallelism.  We discuss the first approach in Section~\ref{random_group} and second approach in Section~\ref{state_server}.
+
+
+\subsection{Random Grouping Approach}
+\label{random_group}
+
+    Let a piece of input of map be $(key, value)$. We set $key$ to be empty and let $value$ represent a node on the search tree, which includes $n+3$ fields. The first $3$ states are minimum upper bound, lower bound and upper bound. The following $n$ fields corresponds to the states of each vertex with $-1$ representing the vertex has not been searched yet.
+
+    In the map function we expand a node $k=\{GUB, LB, UB,$ $x_1, \dots, x_n\}$ to a list of nodes $L=\{k_1, \dots, k_m\}$, calculate lower bound and upper bound for each $k_i$ and finally update the minimum upper bound for each $k_i$. Thus the output nodes of each map function see a `local' view of the minimum upper bound. We assign each output node's $key$ field with a random integer which lies in $[0, r)$. The nodes with same $key$ will be sent to the same reduce.
+
+    In the reduce function, nodes will share their local minimum upper bound. {\color{red}????}
+
+    Let $t$ be the number of nodes expanded. Since we have $r$ random integers, the nodes will be divided into $r$ groups where each group has approximately $t_1=\lceil t/r \rceil$ nodes. Assume there are $q$ maps, normally the $t$ nodes are equally produced by the maps. Therefore, at least $t_2=\lceil t/q \rceil$ will see the actual global upper bound after map. The probability that none of the these nodes is in some particular group is
+    \[
+        \left(\frac{r-1}{r}\right)^{t_2}
+    \]
+
+    Let $p$ be the probability that each node sees the actual global minimum upper bound after reduce. We have
+    \begin{align*}
+        p \geq 1-r\left(1-\frac{1}{r}\right)^{t_2}
+    \end{align*}
+
+    For instance, select $r$ be 3-5 times the number of machines, probably 200. If we make $t_2$ be 10000, then we have
+    \[p\geq 1-200(1-1/200)^{10000}=1\]
+
+
+\subsection{Asychronous State Server Approach}
+\label{state_server}
+    With some experiments we notice that each iteration can be done with a map-only job, in which we omit the reduce part. This significantly reduces running time since the shuffle between map and reduce will sort the data, which we do not need. However, this will cause many nodes not seeing the global minimum upper bound, which leads to fewer nodes discarded than in random grouping. To solve this, we use a \textit{parameter server}.
+
+    We set up a web server which stores the global minimum upper bound and supports query and modify to the bound. In each map, we start another thread, which constantly check if the local minimum upper bound is updated, and if so, this thread will interact with the web server. This thread is independent from the map function and thus will bring very little overhead. But with the server, the output nodes of each iteration reduces abount $1/3$ to $1/2$.
