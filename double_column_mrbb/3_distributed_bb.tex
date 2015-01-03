@@ -4,69 +4,90 @@
 
 \subsubsection{MapReduce}\
 
-\noindent MapReduce~\cite{} is a programming model proposed by Google which is used for massive parallel and distributed computing on large data sets. It is composed of the following two main steps:
+\noindent MapReduce~\cite[]{dean2008mapreduce} is a programming model proposed by Google which is used for massive parallel and distributed computing on large data sets. The computation takes a set of ($key, value$) pairs as input, and produces a set of output $(key, value)$ pairs. It is composed of the following two main steps:
 
-\noindent \textbf{Map}: The input data is divided into $N$ parts. The code for processing each part and the data will be copied to a compute node.
+\noindent \textbf{Map}: The input data set is divided into several parts, and each part is processed by a worker to produce a set of intermediate $(key, value)$ pairs in parallel. The MapReduce library groups together the values with the same key, and then passes them to the \textsc{Reduce} function.
 
-\noindent \textbf{Reduce}: The result of \textit{map} step is distributed to $M$ compute nodes. The nodes run parallel and return the result.
+\noindent \textbf{Reduce}: The \textsc{Reduce} function accepts an intermediate key, and a set of values for that key. Each \textsc{Reduce} function is also processed in parallel, and produces a set of $(key, value)$ pairs as result.
 
-What users need to do is just implement map and reduce functions. Map tells the platform how to process the data, and reduce tells how to combine the results.
+MapReduce can be easily deployed and used. What users need to do is just implementing \textsc{Map} and \textsc{Reduce} functions. The implementation of MapReduce runs efficiently on a cluster of commodity machines and provides fault tolerance: a worker failure will not cause the whole job to be failed. It is also highly scalable that a MapReduce job typically processes terabytes of data.
 
 \todo{talk about the advantage of map reduce: efficiency on commodity hardware, fault tolerance, scalable, etc. }
 
+
+
 \subsubsection{Branch-and-Bound on MapReduce}\
 
-\noindent If we take a look at the search tree of the algorithm, we can observe that the expansions of nodes on the same level are independent. Therefore, the branch procedure can be done parallel for a level of nodes. After that the bound procedure is done on all nodes expanded.
+\noindent If we take a look at the BnB search tree of the algorithm, we can observe that the expansions of nodes (each node is correspond with a state space) on the same level are independent. Therefore, the branch procedure can be done parallel for a level of nodes. After that the bound procedure is done on all nodes expanded.
 
-This can be fit into the MapReduce model. In a MapReduce model, input data is a list of \texttt{(key, value)} pairs, which is first processed by \texttt{map} function. The \texttt{map} function takes each \texttt{(key, value)} pair as input, do some calculation on it and emits a list of \texttt{(key', value')} pairs. The outputs are then grouped by keys, and sent to the \texttt{reduce} function. The \texttt{reduce} function takes a key and a list of values as input, and outputs a list of \texttt{(key'', value'')} pairs.
+This can be fit into the MapReduce model. In a MapReduce model, input data is a list of $(key, value)$ pairs, which is first processed by \textsc{Map} function. The \textsc{Map} function takes each $(key_1, value_1)$ pair as input, do some calculation on it and emits a list of $(key_2, value_2)$ pairs. The outputs are then grouped by keys, and sent to the \textsc{Reduce} function. The \textsc{Reduce} function takes a key and a list of values as input, and outputs a list of $(key_3, value_3)$ pairs.
 
-In our design, we process each level of the search tree with one MapReduce job, where we call it one iteration. In the $i$th iteration, we expand the $i$th level of nodes. Therefore the whole search needs $n$ iterations. For each iteration, the \texttt{map} function is designed as follows
+In our design, we process each level of the search tree with one MapReduce job, where we call it one iteration. In the $i$-th iteration, we expand the $i$-th level of nodes. Therefore the whole search needs $n$ iterations. For each iteration, the \textsc{Map} function is designed as follows
 \begin{algorithm}
 \caption{Map}
 \begin{algorithmic}[1]
-\Function{Map}{$Key, Value, Context$}
+\Function{Map}{$Key, Value$}
     \State $S \gets Value$
-    \State $(S_1,S_2,...,S_m) \gets \textsc{Branch}(X)$
+    \State $(S_1,S_2,...,S_m) \gets \textsc{Branch}(S)$
     \For {$i \gets 1$\textbf{ to }$m$}
-        \State $best \gets \min(GUB, \textsc{UpperBound}(S_i))$
+        \State $GUB \gets \min(GUB, \textsc{UpperBound}(S_i))$
     \EndFor
+    \State $result \gets \emptyset$
     \For {$i \gets 1$\textbf{ to }$m$}
         \If {$\textsc{LowerBound}(S_i) < GUB$}
-            \State $Context.write(X)$
+            \State $result \gets result\cup S_i$
         \EndIf
     \EndFor
-    \State \textbf{return }$best$
+    \State \textbf{return }$result$
 \EndFunction
 \end{algorithmic}
 \end{algorithm}
 
+Here $Key$ is \textit{Null}, and $Value$ is a state space node, 
+
 
 After each \texttt{map} function processes the brach(es) assigned, we need to allow all \texttt{map} functions to exchange their results to get global miminum upper bound. There are two major problems with this global upper bound update: 1) we need to wait for \emph{all} upper bounds from the \texttt{map} functions. In other words, we need to apply a \emph{barrier} after the \texttt{map} executions. The problem with barrier is that we the slowest tasks determine the overall speed of the entire system. 2) to compute the global minimum upper bound, we need to send all local bound to a single place, which results in a single \texttt{reduce} task, significantly lowering the level of parallelism.
 
-In order to eliminate the two bottlenecks of parallel solution, we used the following two approaches. In the first approach we use what we call \textit{random grouping} to solve this problem. We can retain full compatibility with existing MapReduce framework with this approach. In the second approach, we added a global state server to manage the global upper bound and use asynchronous communication paradigm and eventual consistency to increase the level of parallelism.  We discuss the first approach in Section~\ref{random_group} and second approach in Section~\ref{state_server}.
+In order to eliminate the two bottlenecks of parallel solution, we used the following two approaches. In the first approach we use what we call \textit{random grouping} to solve this problem. We can retain full compatibility with existing MapReduce framework with this approach. In the second approach, we added a global state server to manage the global variable $GUB$ and use asynchronous communication paradigm and eventual consistency to increase the level of parallelism.  We discuss the first approach in Section~\ref{random_group} and second approach in Section~\ref{state_server}.
 
 
 \subsection{Random Grouping Approach}
 \label{random_group}
 
-    Let a piece of input of map be $(key, value)$. We set $key$ to be empty and let $value$ represent a node on the search tree, which includes $n+3$ fields. The first $3$ states are minimum upper bound, lower bound and upper bound. The following $n$ fields corresponds to the states of each vertex with $-1$ representing the vertex has not been searched yet.
+Let a piece of input of map be $(key, value)$. We set $key$ to be empty and let $value$ represent a node on the search tree, which includes $n+3$ fields. The first $3$ states are $GUB$, $LB$ and $UB$. The following $n$ fields corresponds to the states of each vertex with $-1$ representing the vertex has not been searched yet.
 
-    In the map function we expand a node $k=\{GUB, LB, UB,$ $x_1, \dots, x_n\}$ to a list of nodes $L=\{k_1, \dots, k_m\}$, calculate lower bound and upper bound for each $k_i$ and finally update the minimum upper bound for each $k_i$. Thus the output nodes of each map function see a `local' view of the minimum upper bound. We assign each output node's $key$ field with a random integer which lies in $[0, r)$. The nodes with same $key$ will be sent to the same reduce.
+In the map function we expand a node $k=\{GUB, LB, UB,$ $x_1, x_2, \dots, x_n\}$ to a list of nodes $L=\{k_1, k_2, \dots\}$, calculate lower bound and upper bound for each $k_i$ and finally update $GUB$ for each extended node $k_i$. Thus the output nodes of each \textsc{Map} function see a ``local'' view of $GUB$. We assign each output node's $key$ field with a random integer which lies in $[0, r)$. The nodes with same $key$ will be sent to the same reduce, and thus nodes will share their local $GUB$ in order to get the global minimum of $GUB$.
 
-    In the reduce function, nodes will share their local minimum upper bound. {\color{red}????}
+\begin{theorem}
+Let $n$ be the total number of expanded nodes that their local $GUB$ is the global minimum of $GUB$, and $r$ be the number of groups that all nodes divided. Then all nodes will know the global minimum of $GUB$ with probability at least $1-n^{-c}$ if $r\le \displaystyle{\frac{n}{(c+1)\ln{n}}}$ for any $c\ge 1$.
+\end{theorem}
+\begin{proof}
+In order to make all nodes know $GUB^*$, which is the global minimum of $GUB$, each group need obtain at least one node of the above $n$ nodes. Let $A_i$ ($0\le i < r$) be the event that there is no node knows $GUB^*$ is allocated into the $i$-th group, then the probability of event $A_i$ is
+\[ \Pr[A_i] = \left(1-\frac{1}{r}\right)^n \]
+and the probability $P[A]$ that at least one group does not get the above $n$ nodes is
+\begin{align*}
+ P[A] & = \Pr[A_0\cup A_1\cup...\cup A_{r-1}] \\
+ & \le \Pr[A_0]+\Pr[A_1]+...+\Pr[A_{r-1}] \\
+ & = r\left(1-\frac{1}{r}\right)^n
+\end{align*}
 
-    Let $t$ be the number of nodes expanded. Since we have $r$ random integers, the nodes will be divided into $r$ groups where each group has approximately $t_1=\lceil t/r \rceil$ nodes. Assume there are $q$ maps, normally the $t$ nodes are equally produced by the maps. Therefore, at least $t_2=\lceil t/q \rceil$ will see the actual global upper bound after map. The probability that none of the these nodes is in some particular group is
-    \[
-        \left(\frac{r-1}{r}\right)^{t_2}
-    \]
+By applying the inequality $1-x\le e^{-x}$ for all $x\in\mathbb{R}$, and the condition $r\le \displaystyle{\frac{n}{(c+1)\ln{n}}}$, we get
+\begin{align*}
+P[A] & \le r e^{-n/r} \\
+& \le \frac{n}{(c+1)\ln{n}} e^{-(c+1)\ln{n}} \\
+& = \frac{n^{-c}}{(c+1)\ln{n}} \\
+& \le n^{-c}
+\end{align*}
 
-    Let $p$ be the probability that each node sees the actual global minimum upper bound after reduce. We have
-    \begin{align*}
-        p \geq 1-r\left(1-\frac{1}{r}\right)^{t_2}
-    \end{align*}
+The probability $\Pr[\bar{A}]$ that all nodes know $GUB^*$ is
+\begin{align*}
+\Pr[\bar{A}] = 1-\Pr[A] \ge 1-n^{-c}
+\end{align*}
 
-    For instance, select $r$ be 3-5 times the number of machines, probably 200. If we make $t_2$ be 10000, then we have
-    \[p\geq 1-200(1-1/200)^{10000}=1\]
+\end{proof}
+
+For instance, select $r=200$ and $n=10000$, then the probability is
+\[ \Pr[\bar{A}] \ge 1-r\left(1-\frac{1}{r}\right)^n = 1-200\left(1-\frac{1}{200}\right)^{10000} \approx 1\]
 
 
 \subsection{Asychronous State Server Approach}

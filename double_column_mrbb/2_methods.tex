@@ -1,7 +1,7 @@
 \section{Methods}
 \subsection{Background}
 
-\subsubsection{Problem formulation}\ 
+\subsubsection{Problem formulation}\
 
 \noindent The protein design problem can be described as a pairwise markov networks. All the residues of the protein can be regarded as the vertices of the network, and the interaction between residues is the edges. Let $G=(V,E)$ be the markov network of the protein design problem, then for each vertex $v\in V$, there is an available states set $X_v$, which is the rotamer set of the residue position $v$ in the protein chain. The aim of the CPD problem is to find the optimal assignment $\mathbf{x^*}$ that minimizes the total energy, namely
 \[ \mathbf{x^*} = \arg\min_{\mathbf{x}}\left(\sum_{v\in V}\theta_v(x_v) + \sum_{(u,v)\in E}\theta_{uv}(x_u,x_v)\right) \]
@@ -9,7 +9,7 @@ where $x_v\in X_v$ is the rotamer at residue position $v$, $\theta_v(x_v)$ is th
 
 In order to find the optimal solution of a NP-hard problem, we often need to search over a huge state space. As many popular methods to solve the CPD problem, firstly use dead-end elimination as a pre-filtering algorithm to prune the rotamers that are not part of the GMEC, and thus reduce the search space. Then we use branch-and-bound algorithm on a distributed computing platform to search the remain search space.
 
-\subsubsection{Branch-and-Bound}\ 
+\subsubsection{Branch-and-Bound}\
 
 \noindent Branch-and-Bound (BnB) is a widely-used search algorithm for solving various combinatorial optimization problems. This algorithm constantly divides the state space into several smaller sub-spaces (this step is called \textit{branching}) and then calculate the bound for each sub-spaces (this step is called \textit{bounding}). After that, those sub-spaces which certainly not contain the optimal solution (i.e. the lower bound is larger than the known upper bound) are discarded.
 
@@ -52,7 +52,7 @@ Assume we the network contains $n$ vertices which are numbered from 1 to $n$, an
 
 Here $Q$ is usually a FIFO or priority queue, and we maintain a global variable $GUB$ to store the best solution. An efficient lower bound of a state space will be proposed in Section 2.2.2, and upper bound in Section 2.2.3.
 
-\subsubsection{Local Dead-End Elimination Algorithm}\ 
+\subsubsection{Local Dead-End Elimination Algorithm}\
 
 \noindent The dead-end elimination (DEE) algorithm is an efficient method to eliminate infeasible variable states. For a variable $x_v$, and two variable states $x_v^i$ and $x_v^j$ in $X_v$, if the following condition is satisfied, then state $x_v^i$ can be eliminated, which reduces the search space.
 \begin{align}
@@ -67,8 +67,8 @@ The more powerful criterion that improved by \cite{goldstein1994efficient} is
 
 We apply the Goldstein DEE criterion in (2) to the function \textsc{Branch}. Let $D(X)$ be the set of variables that have been searched, and $U(X)=V\setminus D(X)$ be the set of variables which has not been determined yet. Consider two variable states $x_v^i$ and $x_v^j$ in an undetermined variable $x_v$, the Goldstein DEE criterion we use in the \textsc{Branch} functions is
 \begin{align}
-& \theta_v(x_v^i)-\theta_v(x_v^j)+\sum_{(u,v)\in E\wedge u\in D(X)}[\theta_{uv}(x_u,x_v^i)-\theta_{uv}(x_u,x_v^j)] \notag \\
-& +\sum_{(u,v)\in E\wedge u\in U(X)}\min_{x_u\in X_u}[\theta_{uv}(x_u,x_v^i)-\theta_{uv}(x_u,x_v^j)] > 0
+& \theta_v(x_v^i)-\theta_v(x_v^j)+\sum_{\substack{(u,v)\in E\\ u\in D(X)}}[\theta_{uv}(x_u,x_v^i)-\theta_{uv}(x_u,x_v^j)] \notag \\
+& +\sum_{\substack{(u,v)\in E\\ u\in U(X)}}\min_{x_u\in X_u}[\theta_{uv}(x_u,x_v^i)-\theta_{uv}(x_u,x_v^j)] > 0
 \end{align}
 
 By applying the DEE criterion in Eq. (3), we can eliminate a large number of infeasible variable states, and thus significantly reduces the branch space.
@@ -80,17 +80,17 @@ Here, the DEE criterion is incorporated into each branch step. To distinguish it
 \noindent\textbf{Naive Lower Bound.}
 A naive lower bound of the energy function in protein design can be easily computed by considering the best possible rotamer assignment in each residue, which is
 \begin{align}
-\sum_{v\in V}\min_{x_v\in X_v}\left(\theta_v(x_v)+\sum_{u<v\wedge(u,v)\in E}\min_{x_u\in X_u}\theta_{uv}(x_u,x_v)\right)
+\sum_{v\in V}\min_{x_v\in X_v}\left(\theta_v(x_v)+\sum_{\substack{(u,v)\in E\\ u<v}}\min_{x_u\in X_u}\theta_{uv}(x_u,x_v)\right)
 \end{align}
 
 That is, the naive lower bound of the current state space $X$ can be written as
 \begin{align}
 LB_1(X)=&g(X)+\sum_{v\in U(x)}\min_{x_v\in X_v}\left(\theta_v(x_v)+\sum_{u\in D(X)}\theta_{uv}(x_u,x_v)\notag\right. \\
-&\left.+\sum_{u<v\wedge u\in U(X)}\min_{x_u\in X_u}\theta_{uv}(x_u,x_v)\right)
+&\left.+\sum_{\substack{u\in U(X)\\ u<v}}\min_{x_u\in X_u}\theta_{uv}(x_u,x_v)\right)
 \end{align}
 where we leave $(u,v)\in E$ out from the summation notation for simplifying the expression, and $g(X)$ is the energy of the determined variables (i.e. those residues in which the rotamers have been determined), that is
 \[
-g(X) = \sum_{v\in D(X)}\theta_v(x_v)+\sum_{u,v\in D(X)\wedge u<v}\theta_{uv}(x_u,x_v)
+g(X) = \sum_{v\in D(X)}\theta_v(x_v)+\sum_{\substack{u,v\in D(X)\\ u<v}}\theta_{uv}(x_u,x_v)
 \]
 
 \noindent\textbf{Efficient Lower Bound.} By observing the formula of the naive lower bound in Eq. (4), we see that every edge-energy function is only used for one vertex (i.e. the vertex has greater index in Eq. (4)). If we split $\theta_{uv}$ into two functions $\beta_{uv}$ and $\beta_{vu}$ where $\beta_{uv}(x_u,x_v)+\beta_{vu}(x_v,x_u)=\theta_{uv}(x_u,x_v)$ for all $x_u,x_v$, then the formula of (4) becomes
@@ -102,7 +102,7 @@ s.t. & \ \ \beta_{uv}(x_u,x_v)+\beta_{vu}(x_v,x_u)=\theta_{vu}(x_u,x_v) \notag \
 
 The above optimization problem is a convex dual of MAPLPR, which can be solved by Convergent Message Passing Algorithms~\cite[]{globerson2008fixing}.
 
-If we compute the best functions $\beta^*$, then the lower bound of the current state space $X$ becomes
+Let $\beta^*$ be the functions that found by message passing algorithm, then the lower bound of the current state space $X$ becomes
 \begin{align}
 LB_2(X)=&g(X)+\sum_{v\in U(X)}\min_{x_v\in X_v}\left(\theta_v(x_v)+\sum_{u\in D(X)}\theta_{uv}(x_u,x_v)\right. \notag \\
 &\left.+\sum_{u\in U(X)}\min_{x_u\in X_u}\beta_{uv}^*(x_u,x_v)\right)
@@ -112,7 +112,7 @@ Since $\beta^*$ may not be the best functions for any state space, it is necessa
 
 If we compute $LB_2$ directly, then the time complexity is $O(n^2m^2)$, where $n$ is the number of mutable residues, and $m$ is the number of rotamers per residue. If we firstly compute a table $p$ that $p_{uv}(x_v)=\min_{x_u\in X_u}\beta_{uv}^*(x_u,x_v)$ with time $O(n^2m^2)$ and space $O(n^2m)$, then the time of computing $LB_2$ decrease to $O(n^2m)$.
 
-\noindent\textbf{Mini-Bucket.} The mini-bucket elimination (MBE) is a well-known approximation algorithm for graphical models~\cite[]{dechter2003mini, rollon2010evaluating, rollon2006mini}, and it gives a bound when the induced width of the graph is too large. The idea of mini-bucket elimination is to eliminate variables, and the time and space complexity of MBE is $O(m^i)$ where $i$ is a user controlled parameter that restrict the size of the scopes of each functions. We also apply this algorithm in our method to 
+\noindent\textbf{Mini-Bucket.} The mini-bucket elimination (MBE) is a well-known approximation algorithm for graphical models~\cite[]{dechter2003mini, rollon2010evaluating, rollon2006mini}, and it gives a bound when the induced width of the graph is too large. The idea of mini-bucket elimination is to eliminate variables, and the time and space complexity of MBE is $O(m^i)$ where $i$ is a user controlled parameter that restrict the size of the scopes of each functions. We also apply this algorithm in our method to
 
 \subsection{Upper Bound}
 Upper bound is different from lower bound, we often use a relatively better solution in $X$ as its upper bound. There are many meta-heuristic methods have been applied to it, such as Monte-Carlo with simulated annealing~\cite[]{kuhlman2000native, voigt2000trading}, and genetic algorithms~\cite[]{raha2000prediction}. These approaches can usually find a relatively better solution quickly but without any guarantees of accuracy. Thus, these methods provide us with an efficient upper bound.
